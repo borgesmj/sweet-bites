@@ -1,0 +1,92 @@
+import { useEffect, useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore';
+
+function App() {
+  const firebaseApp = initializeApp({
+    apiKey: "AIzaSyBMQ7zPjGGL6mOhNQ9TFHXUwGBD-3UkGPM",
+    authDomain: "sweet-bites-922e3.firebaseapp.com",
+    projectId: "sweet-bites-922e3",
+    storageBucket: "sweet-bites-922e3.appspot.com",
+    messagingSenderId: "21633216899",
+    appId: "1:21633216899:web:9457a17b18cfe4246686b6",
+    measurementId: "G-V459BW9BRQ"
+  });
+  const db = getFirestore(firebaseApp);
+
+  const [productosData, setProductosData] = useState([]);
+  useEffect(() => {
+    const obtenerProductos = async () => {
+      const productos = collection(db, 'productos');
+      const querySnapshot = await getDocs(productos);
+
+      const productosArray = [];
+      querySnapshot.forEach((doc) => {
+        productosArray.push(doc.data());
+      });
+      setProductosData(productosArray);
+    };
+
+    obtenerProductos().catch((error) => {
+      console.error('Error al obtener los documentos:', error);
+    });
+  }, [db]);
+
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [type, setType] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const nuevoProducto = {
+      name: name,
+      description: description,
+      available: true,
+      value: 6000,
+      image_url: '',
+      type: type,
+      _id: productosData.length + 1
+    };
+
+    const nuevoDocumento = {
+      id: `${productosData.length + 1}`,
+    };
+
+    setDoc(doc(db, 'productos', nuevoDocumento.id), nuevoProducto)
+      .then(() => {
+        console.log('Documento agregado con ID personalizado:', nuevoDocumento.id);
+        // Actualiza la lista de productos después de agregar uno nuevo
+        setProductosData([...productosData, nuevoProducto]);
+      })
+      .catch((error) => {
+        console.error('Error al agregar el documento:', error);
+      });
+
+    // Reiniciar los campos del formulario
+    setName('');
+    setDescription('');
+    setType('');
+  };
+
+  return (
+    <>
+      <form action="" onSubmit={handleSubmit}>
+        <input type="text" placeholder='name' value={name} onChange={(e) => { setName(e.target.value) }} />
+        <input type="text" placeholder='description' value={description} onChange={(e) => { setDescription(e.target.value) }} />
+        <input type="text" placeholder='type' value={type} onChange={(e) => { setType(e.target.value) }} />
+        <input type="submit" value="Enviar" />
+      </form>
+
+      <ul>
+        {productosData.map((producto, index) => (
+          <li key={index}>
+            {producto.name} - {producto.description} - {producto.type}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default App;
