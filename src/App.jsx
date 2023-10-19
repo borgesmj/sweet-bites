@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-// Components
+//Components
 import Navbar from './Components/Navbar/Navbar';
 
 function App() {
@@ -61,8 +61,8 @@ function App() {
 
 
   return (
-    <div className='app'>
-      <Navbar/>
+    <div className=''>
+    <Navbar categories = {categories}/>
     </div>
   )
 }

@@ -1,11 +1,53 @@
-import React from 'react'
+import React, { useState } from "react";
+import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ categories }) => {
+  const [navbarCheck, setNavbarCheck] = useState(false);
+  const handleNavbarCheck = () => {
+    setNavbarCheck(!navbarCheck);
+  };
   return (
-    <div>
-      navbar
-    </div>
-  )
-}
+    <nav className="h-12 px-4 flex flex-row justify-between items-center bg-driftwood-500">
+      <a href="" className="h-12 w-12 fixed left-8">
+        <img
+          src="https://borgesmj.github.io/sweet-bites/src/IMG/Logo.png"
+          alt=""
+          className="h-full w-full"
+        />
+      </a>
+      <div className="bg-driftwood-300 h-8 w-full md:flex flex-row justify-end md:h-4">
+        <input
+          readOnly
+          type="checkbox"
+          name=""
+          id="navcheck"
+          className="hidden"
+          checked={navbarCheck}
+        />
+        <div
+          className="burger__menu w-8 h-8 fixed right-8 flex flex-col justify-between md:hidden"
+          onClick={handleNavbarCheck}
+        >
+          <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
+          <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
+          <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
+        </div>
+        <ul className="navlist fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-9/12 md:h-1/2 md:h-4 md:p-0">
+          {categories.map((item) => (
+            <li
+              className="navbar-option text-[#43e09e] mt-4 text-4xl font-bold md:text-xs md:mt-0 rounded-lg md:opacity-90"
+              key={`navoption_${item}`}
+            >
+              <a href="">{item.toUpperCase()}</a>
+            </li>
+          ))}
+          <li className="navbar-option text-[#43e09e] mt-4 text-4xl font-bold md:text-xs md:mt-0 rounded-lg md:opacity-90">
+            <a href="">VER CARRITO</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
