@@ -1,12 +1,16 @@
+// Dependencies
+// React
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Firebase
 import { initializeApp } from 'firebase/app'
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 function App() {
+  // USeStates 
+  const [productosData, setProductosData] = useState([]);
+
+
+  // firebase keys
   const firebaseApp = initializeApp({
     apiKey: "AIzaSyBMQ7zPjGGL6mOhNQ9TFHXUwGBD-3UkGPM",
     authDomain: "sweet-bites-922e3.firebaseapp.com",
@@ -17,17 +21,22 @@ function App() {
     measurementId: "G-V459BW9BRQ"
   })
 
-  const [productosData, setProductosData] = useState([]);
   useEffect(() => {
+    // se inicializa una constante con la funcion de getFirestore con los keys de firebaseApp
     const db = getFirestore(firebaseApp);
+    
+    // se trae la coleccion 
     const productos = collection(db, 'productos');
-
+    
+    // se hace un 'fetch' de firebase
     getDocs(productos)
       .then((querySnapshot) => {
+        // inicializamos un arreglo que pueda ser mutado
         const productosArray = [];
         querySnapshot.forEach((doc) => {
-          productosArray.push(doc.data());
-        });
+          productosArray.push(doc.data())
+        })
+        // Para poder almacenar en el array iniciado con useState
         setProductosData(productosArray); // Almacena los datos en el estado.
       })
       .catch((error) => {
@@ -36,32 +45,8 @@ function App() {
   }, []);
 
 
-
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-        <img src={productosData[1]?.image_url}/>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
