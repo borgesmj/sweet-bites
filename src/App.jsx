@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
+// Components
+import Navbar from './Components/Navbar/Navbar';
+
 function App() {
   // USeStates 
   const [productosData, setProductosData] = useState([]);
@@ -58,9 +61,9 @@ function App() {
 
 
   return (
-    <>
-    <h1>Hello world</h1>
-    </>
+    <div className='app'>
+      <Navbar/>
+    </div>
   )
 }
 
