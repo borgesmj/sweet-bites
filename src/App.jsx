@@ -8,6 +8,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 function App() {
   // USeStates 
   const [productosData, setProductosData] = useState([]);
+  const [categories, setCategories] = useState([])
 
 
   // firebase keys
@@ -43,6 +44,17 @@ function App() {
         console.error('Error al obtener los documentos:', error);
       });
   }, []);
+
+  // Crear un array de categorias
+  useEffect(() => {
+      const tempCategories = []
+      productosData.forEach((product) => {
+        if (!tempCategories.includes(product.type)){
+          tempCategories.push(product.type)
+        }
+      })
+      setCategories(tempCategories)
+  },[productosData])
 
 
   return (
