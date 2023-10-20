@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = ({ categories }) => {
   const [navbarCheck, setNavbarCheck] = useState(false);
   const handleNavbarCheck = () => {
     setNavbarCheck(!navbarCheck);
   };
+  const location = useLocation()
+  useEffect(() => {
+      setNavbarCheck(false)
+  },[location.pathname])
+  console.log()
   return (
     <nav className="h-12 px-4 flex flex-row justify-between items-center bg-driftwood-500">
       <a href="" className="h-12 w-12 fixed left-8">
