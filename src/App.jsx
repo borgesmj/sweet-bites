@@ -4,9 +4,16 @@ import { useEffect, useState } from 'react'
 // Firebase
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+//React routes Dom
+import { Routes, Route } from 'react-router-dom';
 
 //Components
 import Navbar from './Components/Navbar/Navbar';
+
+// Pages
+import CArtPage from './Pages/Cart/CArtPage';
+import Homepage from './Pages/Home/Homepage'
+import ProductsPage from './Pages/Products/ProductsPage';
 
 function App() {
   // USeStates 
@@ -63,6 +70,26 @@ function App() {
   return (
     <div className=''>
     <Navbar categories = {categories}/>
+    <Routes>
+          <Route
+            path='/'
+            element={<Homepage/>}
+          ></Route>
+          <Route
+            path='/carrito/'
+            element={<CArtPage/>}
+          ></Route>
+          {categories.map((item) => (
+            <Route
+              path={`/${item}/`}
+              element={<ProductsPage
+                category = {item}
+              />}
+            ></Route>
+          ))}
+    </Routes>
+    
+    
     </div>
   )
 }

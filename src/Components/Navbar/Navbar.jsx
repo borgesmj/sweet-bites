@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ categories }) => {
   const [navbarCheck, setNavbarCheck] = useState(false);
@@ -34,18 +35,18 @@ const Navbar = ({ categories }) => {
         </div>
         <ul className="navlist fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-9/12 lg:w-1/2 md:h-4 md:p-0 md:me-16">
         <li className="navbar-option hidden md:block  text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90">
-            <a href="">INICIO</a>
+            <NavLink to="/" className="relative">INICIO</NavLink>
           </li>
           {categories.map((item) => (
             <li
               className="navbar-option text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90"
               key={`navoption_${item}`}
             >
-              <a href="">{item.toUpperCase()}</a>
+              <NavLink to={`/${item}/`} className="relative">{item.toUpperCase()}</NavLink>
             </li>
           ))}
           <li className="navbar-option carrito text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90">
-            <a href="">VER CARRITO</a>
+            <NavLink to="/carrito/" className='relative'>VER CARRITO</NavLink>
           </li>
         </ul>
       </div>
