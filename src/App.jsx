@@ -14,11 +14,13 @@ import Navbar from "./Components/Navbar/Navbar";
 import CArtPage from "./Pages/Cart/CArtPage";
 import Homepage from "./Pages/Home/Homepage";
 import ProductsPage from "./Pages/Products/ProductsPage";
+import InitialModal from "./Components/InitialModal/InitialModal";
 
 function App() {
   // USeStates
   const [productosData, setProductosData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [initialModal, setInitialModal] = useState(true)
 
   // firebase keys
   const firebaseApp = initializeApp({
@@ -51,6 +53,11 @@ function App() {
       })
       .catch((error) => {
         console.error("Error al obtener los documentos:", error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setInitialModal(false)
+        }, 1000);
       });
   }, []);
 
@@ -66,8 +73,11 @@ function App() {
   }, [productosData]);
 
   return (
-    <div className="">
-      <Navbar categories={categories} />
+    <div>
+      {initialModal ? 
+        <InitialModal/> :
+      <div>
+        <Navbar categories={categories} />
       <div className="mt-6 p-8">
         <Routes>
           <Route
@@ -88,6 +98,9 @@ function App() {
           ))}
         </Routes>
       </div>
+      </div>
+    }
+      
     </div>
   );
 }

@@ -14,7 +14,7 @@ const Navbar = ({ categories }) => {
   console.log();
   return (
     <nav className="h-12 px-4 flex flex-row justify-between items-center bg-driftwood-500">
-      <NavLink to="/" className="h-12 w-12 fixed left-8">
+      <NavLink to="/" className="h-12 w-12 fixed left-8 z-[1]">
         <img
           src="https://borgesmj.github.io/sweet-bites/src/IMG/Logo.png"
           alt=""

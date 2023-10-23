@@ -64,7 +64,7 @@ const ProductItem = ({ product, className }) => {
         </div>
       ) : null}
       <input
-        className={`mt-8 ${
+        className={`addToCartBtn lg:w-40 lg:h-16 mt-8 ${
           product.available ? "bg-driftwood-300" : "bg-[#9b9b9b]"
         } p-4 rounded-lg ${
           product.available

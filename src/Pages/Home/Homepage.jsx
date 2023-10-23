@@ -29,7 +29,7 @@ const Homepage = ({ categories, productosData }) => {
               2 && (
               <NavLink
                 to={`/${item}/`}
-                className="shadow-2xl bg-driftwood-400 w-full h-16 flex flex-col items-center justify-center text-2xl rounded-md text-white md:w-32 md:h-32"
+                className="shadow-2xl bg-driftwood-400 w-full h-16 flex flex-col items-center justify-center text-2xl rounded-md text-white md:w-32 md:h-32 lg:hover:translate-x-2 lg:hover:shadow-2xl lg:hover:cursor-pointer"
               >
                 Ver mas
                 <Arrow className="rotate-90" />
