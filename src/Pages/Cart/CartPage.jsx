@@ -1,35 +1,56 @@
 import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import TrashCan from "../../Icons/TrashCan";
+import CartItem from "../../Components/CartItem.jsx/CartItem";
 
 const CArtPage = ({ shoppingCart, eliminarProducto }) => {
-  const [delivery, setDelivery] = useState(true);
-  return (
-    <form className="">
+  const [delivery, setDelivery] = useState(false);
+
+  return shoppingCart.length === 0 ? (
+    <div>
+      <h1 className="text-2xl">Aun no hay productos agregados</h1>
+      <p className="text-2xl">
+        puedes ir a la{" "}
+        <NavLink to="/" className="underline font-bold text-blue-800">
+          Tienda
+        </NavLink>{" "}
+        para agregar productos
+      </p>
+    </div>
+  ) : (
+    <form className="w-1/2 flex flex-col items-center">
       <p className="text-4xl">MI PEDIDO:</p>
-      <table>
+      <table className="w-full">
         <thead>
           <tr>
             <th></th>
-            <th>Nombre del producto</th>
-            <th>Cantidad</th>
-            <th>Total</th>
+            <th className="border-b-2 border-black text-center">
+              Nombre del producto
+            </th>
+            <th className="border-b-2 border-l-2 border-black text-center">
+              Cantidad
+            </th>
+            <th className="border-b-2 border-l-2 border-black text-center">
+              Total
+            </th>
           </tr>
         </thead>
         <tbody>
           {shoppingCart.map((item) => (
-            <tr key={item._id}>
-              <td>
-                <button>X</button>
-              </td>
-              <td>{item.name}</td>
-              <td>{item.cantidad}</td>
-              <td>{item.total}</td>
-            </tr>
+            <CartItem
+              id={item.id}
+              key={`producto_${item.id}`}
+              name={item.name}
+              cantidad={item.cantidad}
+              total={item.total}
+              eliminarProducto={eliminarProducto}
+            />
           ))}
         </tbody>
       </table>
       <div className="">
         <input
+          defaultChecked
           onChange={() => {
             setDelivery(false);
           }}
@@ -86,7 +107,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto }) => {
               id="telefono"
             />
           </div>
-          <span className="text-[10px]">
+          <span className="text-[10px] sm:text-[20px]">
             El servicio a domicilio tiene un cargo adicional.
           </span>
         </div>

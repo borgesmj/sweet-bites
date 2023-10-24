@@ -38,7 +38,7 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
                   <CartItem
                     id={item.id}
                     key={`producto_${item.id}`}
-                    name={item.nombre}
+                    name={item.name}
                     cantidad={item.cantidad}
                     total={item.total}
                     eliminarProducto={eliminarProducto}
@@ -60,7 +60,7 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
             to="/carrito/"
             className="text-2xl flex flex-row w-full items-center lg:hover:cursor-pointer"
           >
-            Ir a pagar
+            Realizar el pago
             <PAy />
           </NavLink>
         </div>
