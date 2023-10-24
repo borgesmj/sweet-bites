@@ -4,26 +4,51 @@ import { NavLink, useLocation } from "react-router-dom";
 import ShoppingCart from "../../Icons/ShoppingCart";
 
 const Navbar = ({ categories, shoppingCart }) => {
-
-
   const [navbarCheck, setNavbarCheck] = useState(false);
   const handleNavbarCheck = () => {
     setNavbarCheck(!navbarCheck);
   };
+
   const location = useLocation();
+
   useEffect(() => {
     setNavbarCheck(false);
   }, [location.pathname]);
-  
-  useEffect(() => {
-    // Obtén el elemento con la clase "carrito"
-    const carritoElement = document.querySelector(".carrito");
 
+  useEffect(() => {
+    const carritoElement = document.querySelector(".carrito");
     if (carritoElement) {
-      // Actualiza el atributo de datos "data-cart-count" con la longitud de shoppingCart
       carritoElement.setAttribute("data-cart-count", shoppingCart.length);
     }
   }, [shoppingCart.length]);
+
+  useEffect(() => {
+    // Cambiar el color del borde de los elementos 'span' a negro cuando se hace scroll hacia abajo
+    const burgerMenu = document.querySelector(".burger__menu");
+    const spans = burgerMenu.querySelectorAll("span");
+
+    // Función para cambiar el color del borde de los elementos 'span'
+    function changeBorderColor() {
+      if (window.scrollY > 0) {
+        spans.forEach((span) => {
+          span.style.borderColor = "black";
+        });
+      } else {
+        spans.forEach((span) => {
+          span.style.borderColor = "white";
+        });
+      }
+    }
+
+    // Agregar un evento de desplazamiento para llamar a la función
+    window.addEventListener("scroll", changeBorderColor);
+
+    // Limpieza del evento cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("scroll", changeBorderColor);
+    };
+  }, []);
+
   return (
     <nav className="h-12 px-4 flex flex-row justify-between items-center bg-driftwood-500">
       <NavLink to="/" className="h-12 w-12 fixed left-8 z-[1]">
@@ -50,7 +75,7 @@ const Navbar = ({ categories, shoppingCart }) => {
           <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
           <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
         </div>
-        <ul className="navlist fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-9/12 lg:w-1/2 md:h-4 md:p-0 md:me-16">
+        <ul className="navlist z-[2] fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-9/12 lg:w-1/2 md:h-4 md:p-0 md:me-16">
           <li className="navbar-option hidden md:block  text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90">
             <NavLink to="/" className="relative">
               INICIO
@@ -66,9 +91,13 @@ const Navbar = ({ categories, shoppingCart }) => {
               </NavLink>
             </li>
           ))}
-          <li className={`navbar-option ${shoppingCart.length === 0 ? null : 'carrito'} text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90`}>
+          <li
+            className={`navbar-option ${
+              shoppingCart.length === 0 ? null : "carrito"
+            } text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90`}
+          >
             <NavLink to="/carrito/" className="relative">
-              <ShoppingCart/>
+              <ShoppingCart />
             </NavLink>
           </li>
         </ul>

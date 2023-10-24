@@ -20,8 +20,8 @@ function App() {
   // USeStates
   const [productosData, setProductosData] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [initialModal, setInitialModal] = useState(true)
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [initialModal, setInitialModal] = useState(true);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   // firebase keys
   const firebaseApp = initializeApp({
@@ -57,7 +57,7 @@ function App() {
       })
       .finally(() => {
         setTimeout(() => {
-          setInitialModal(false)
+          setInitialModal(false);
         }, 1000);
       });
   }, []);
@@ -73,35 +73,55 @@ function App() {
     setCategories(tempCategories);
   }, [productosData]);
 
+  const eliminarProducto = (id) => {
+    const filteredData = shoppingCart.filter((item) => {
+      return item.id !== id;
+    });
+    setShoppingCart(filteredData);
+  };
+  console.log(shoppingCart);
+
   return (
     <div>
-      {initialModal ? 
-        <InitialModal/> :
-      <div>
-        <Navbar categories={categories} shoppingCart={shoppingCart} />
-      <div className="mt-6 p-8">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Homepage categories={categories} productosData={productosData} />
-            }
-          ></Route>
-          <Route path="/carrito/" element={<CArtPage />}></Route>
-          {categories.map((item) => (
-            <Route
-              key={`page_${item}`}
-              path={`/${item}/`}
-              element={
-                <ProductsPage category={item} productosData={productosData} />
-              }
-            ></Route>
-          ))}
-        </Routes>
-      </div>
-      </div>
-    }
-      
+      {initialModal ? (
+        <InitialModal />
+      ) : (
+        <div>
+          <Navbar categories={categories} shoppingCart={shoppingCart} />
+          <div className="mt-6 p-8">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Homepage
+                    categories={categories}
+                    productosData={productosData}
+                    setShoppingCart={setShoppingCart}
+                    shoppingCart={shoppingCart}
+                    eliminarProducto={eliminarProducto}
+                  />
+                }
+              ></Route>
+              <Route path="/carrito/" element={<CArtPage />}></Route>
+              {categories.map((item) => (
+                <Route
+                  key={`page_${item}`}
+                  path={`/${item}/`}
+                  element={
+                    <ProductsPage
+                      category={item}
+                      productosData={productosData}
+                      setShoppingCart={setShoppingCart}
+                      shoppingCart={shoppingCart}
+                      eliminarProducto={eliminarProducto}
+                    />
+                  }
+                ></Route>
+              ))}
+            </Routes>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

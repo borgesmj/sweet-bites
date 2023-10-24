@@ -1,7 +1,14 @@
 import React from "react";
 import ProductItem from "../../Components/ProductItem/ProductItem";
+import CartBar from "../../Components/CartBar/CartBar";
 
-const ProductsPage = ({ category, productosData }) => {
+const ProductsPage = ({
+  category,
+  productosData,
+  setShoppingCart,
+  shoppingCart,
+  eliminarproducto,
+}) => {
   const filteredData = productosData.filter((item) => {
     return item.type === category;
   });
@@ -16,9 +23,17 @@ const ProductsPage = ({ category, productosData }) => {
             key={`producto_${index}`}
             product={producto}
             className="flex flex-col justify-between items-center py-8 my-8 md:w-4/5 rounded-2xl bg-blue-100"
+            setShoppingCart={setShoppingCart}
+            shoppingCart={shoppingCart}
           />
         ))}
       </div>
+      {shoppingCart.length > 0 && (
+        <CartBar
+          shoppingCart={shoppingCart}
+          eliminarproducto={eliminarproducto}
+        />
+      )}
     </div>
   );
 };

@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 
-const ProductItem = ({ product, className }) => {
+const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
   const [cantidad, setCantidad] = useState(1);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (product.available) {
-      // const cantidad = parseInt(e.target.querySelector('select').value)
-      // const articulo = e.target.querySelector('p').innerText
-      // const presentacion = e.target.querySelector('span').innerText
-      // let precio = (e.target.querySelector('.precio').innerText)
+      const generarID = () => {
+        const numero = Math.random().toString(36).substring(2);
+        const fecha = Date.now().toString(36).substring(2);
+
+        return numero + fecha;
+      };
 
       let name = e.target.querySelector("#productName").innerText;
       let value = Number(e.target.querySelector("#productPrice").innerText);
       let cantidad = Number(document.getElementById("productCantidad").value);
+      let total = value * cantidad;
 
-      console.log(cantidad);
       const newProduct = {
         name,
         value,
         cantidad,
+        total,
+        id: generarID(),
       };
-      console.log(newProduct);
+
+      setCantidad(1);
+      setShoppingCart([...shoppingCart, newProduct]);
     } else {
       return;
     }
@@ -43,6 +49,7 @@ const ProductItem = ({ product, className }) => {
             onClick={() => {
               setCantidad(cantidad - 1);
             }}
+            type="button"
           >
             -
           </button>
@@ -58,6 +65,7 @@ const ProductItem = ({ product, className }) => {
             onClick={() => {
               setCantidad(cantidad + 1);
             }}
+            type="button"
           >
             +
           </button>

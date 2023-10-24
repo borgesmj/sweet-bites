@@ -2,8 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ProductItem from "../../Components/ProductItem/ProductItem";
 import Arrow from "../../Icons/Arrow";
+import CartBar from "../../Components/CartBar/CartBar";
 
-const Homepage = ({ categories, productosData }) => {
+const Homepage = ({
+  categories,
+  productosData,
+  setShoppingCart,
+  shoppingCart,
+  eliminarProducto,
+}) => {
   return (
     <div>
       {categories.map((item) => (
@@ -23,6 +30,8 @@ const Homepage = ({ categories, productosData }) => {
                   key={`product_key_${product.name}`}
                   product={product}
                   className="my-8 flex flex-col items-center justify-between bg-blue-100 shadow-2xl md:w-1/3 md:h-[33rem] py-8 px-4 rounded-2xl"
+                  setShoppingCart={setShoppingCart}
+                  shoppingCart={shoppingCart}
                 />
               ))}
             {productosData.filter((product) => product.type === item).length >
@@ -38,6 +47,12 @@ const Homepage = ({ categories, productosData }) => {
           </div>
         </div>
       ))}
+      {shoppingCart.length > 0 && (
+        <CartBar
+          shoppingCart={shoppingCart}
+          eliminarProducto={eliminarProducto}
+        />
+      )}
     </div>
   );
 };
