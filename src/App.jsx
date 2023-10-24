@@ -21,6 +21,7 @@ function App() {
   const [productosData, setProductosData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [initialModal, setInitialModal] = useState(true)
+  const [shoppingCart, setShoppingCart] = useState([])
 
   // firebase keys
   const firebaseApp = initializeApp({
@@ -77,7 +78,7 @@ function App() {
       {initialModal ? 
         <InitialModal/> :
       <div>
-        <Navbar categories={categories} />
+        <Navbar categories={categories} shoppingCart={shoppingCart} />
       <div className="mt-6 p-8">
         <Routes>
           <Route

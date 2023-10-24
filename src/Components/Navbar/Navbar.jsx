@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { NavLink, useLocation } from "react-router-dom";
+import ShoppingCart from "../../Icons/ShoppingCart";
 
-const Navbar = ({ categories }) => {
+const Navbar = ({ categories, shoppingCart }) => {
+
+
   const [navbarCheck, setNavbarCheck] = useState(false);
   const handleNavbarCheck = () => {
     setNavbarCheck(!navbarCheck);
@@ -11,7 +14,16 @@ const Navbar = ({ categories }) => {
   useEffect(() => {
     setNavbarCheck(false);
   }, [location.pathname]);
-  console.log();
+  
+  useEffect(() => {
+    // Obtén el elemento con la clase "carrito"
+    const carritoElement = document.querySelector(".carrito");
+
+    if (carritoElement) {
+      // Actualiza el atributo de datos "data-cart-count" con la longitud de shoppingCart
+      carritoElement.setAttribute("data-cart-count", shoppingCart.length);
+    }
+  }, [shoppingCart.length]);
   return (
     <nav className="h-12 px-4 flex flex-row justify-between items-center bg-driftwood-500">
       <NavLink to="/" className="h-12 w-12 fixed left-8 z-[1]">
@@ -54,9 +66,9 @@ const Navbar = ({ categories }) => {
               </NavLink>
             </li>
           ))}
-          <li className="navbar-option carrito text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90">
+          <li className={`navbar-option ${shoppingCart.length === 0 ? null : 'carrito'} text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90`}>
             <NavLink to="/carrito/" className="relative">
-              VER CARRITO
+              <ShoppingCart/>
             </NavLink>
           </li>
         </ul>
