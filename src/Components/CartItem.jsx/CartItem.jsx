@@ -2,7 +2,8 @@ import React from "react";
 import TrashCan from "../../Icons/TrashCan";
 
 const CartItem = ({ id, name, cantidad, total, eliminarProducto }) => {
-  const handleEliminar = () => {
+  const handleEliminar = (e) => {
+    e.preventDefault()
     eliminarProducto(id);
   };
   return (
