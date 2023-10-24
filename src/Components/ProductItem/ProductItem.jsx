@@ -14,7 +14,6 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
 
       let name = e.target.querySelector("#productName").innerText;
       let value = Number(e.target.querySelector("#productPrice").innerText);
-      let cantidad = Number(document.getElementById("productCantidad").value);
       let total = value * cantidad;
 
       const newProduct = {
@@ -25,8 +24,8 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
         id: generarID(),
       };
 
-      setCantidad(1);
       setShoppingCart([...shoppingCart, newProduct]);
+      setCantidad(1);
     } else {
       return;
     }

@@ -38,7 +38,7 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
                   <CartItem
                     id={item.id}
                     key={`producto_${item.id}`}
-                    name={item.name}
+                    name={item.nombre}
                     cantidad={item.cantidad}
                     total={item.total}
                     eliminarProducto={eliminarProducto}

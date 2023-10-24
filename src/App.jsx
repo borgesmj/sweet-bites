@@ -79,6 +79,7 @@ function App() {
     });
     setShoppingCart(filteredData);
   };
+
   console.log(shoppingCart);
 
   return (
