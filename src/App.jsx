@@ -80,8 +80,6 @@ function App() {
     setShoppingCart(filteredData);
   };
 
-  console.log(shoppingCart);
-
   return (
     <div>
       {initialModal ? (
@@ -103,7 +101,15 @@ function App() {
                   />
                 }
               ></Route>
-              <Route path="/carrito/" element={<CArtPage />}></Route>
+              <Route
+                path="/carrito/"
+                element={
+                  <CArtPage
+                    shoppingCart={shoppingCart}
+                    eliminarProducto={eliminarProducto}
+                  />
+                }
+              ></Route>
               {categories.map((item) => (
                 <Route
                   key={`page_${item}`}
