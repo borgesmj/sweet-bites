@@ -72,7 +72,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto }) => {
         <label htmlFor="entregaDomicilio">Entrega a Domicilio</label>
       </div>
       {delivery && (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center w-full">
           <p className="txt-2xl">Datos de la persona que recibe:</p>
           <div className="w-full flex justify-between mt-4">
             <label className="w-2/5" htmlFor="nombre">
