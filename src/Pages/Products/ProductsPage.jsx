@@ -7,7 +7,7 @@ const ProductsPage = ({
   productosData,
   setShoppingCart,
   shoppingCart,
-  eliminarproducto,
+  eliminarProducto,
 }) => {
   const filteredData = productosData.filter((item) => {
     return item.type === category;
@@ -31,7 +31,7 @@ const ProductsPage = ({
       {shoppingCart.length > 0 && (
         <CartBar
           shoppingCart={shoppingCart}
-          eliminarproducto={eliminarproducto}
+          eliminarProducto={eliminarProducto}
         />
       )}
     </div>

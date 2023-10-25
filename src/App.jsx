@@ -107,6 +107,7 @@ function App() {
                   <CArtPage
                     shoppingCart={shoppingCart}
                     eliminarProducto={eliminarProducto}
+                    setShoppingCart={setShoppingCart}
                   />
                 }
               ></Route>

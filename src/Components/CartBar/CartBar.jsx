@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import PAy from "../../Icons/PAy";
 import CartItem from "../CartItem.jsx/CartItem";
-
+import './CartBar.css'
 const CartBar = ({ shoppingCart, eliminarProducto }) => {
   const [sideList, setSideList] = useState(false);
 
@@ -56,21 +56,17 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
             </table>
           </div>
 
-          <NavLink
-            to="/carrito/"
-            className="text-2xl flex flex-row w-full items-center lg:hover:cursor-pointer"
-          >
-            Realizar el pago
-            <PAy />
-          </NavLink>
+          
         </div>
       )}
-      <div className="w-full h-12 flex flex-row justify-between items-center">
-        <p>{`${shoppingCart.length} producto${
-          shoppingCart.length > 1 ? "s" : ""
-        } añadido${shoppingCart.length > 1 ? "s" : ""}`}</p>
+      <div className="w-full h-16 flex flex-row justify-between items-center">
+        <p className='w-1/4 text-sm'>
+            {`${shoppingCart.length} producto${
+            shoppingCart.length > 1 ? "s" : ""
+          } añadido${shoppingCart.length > 1 ? "s" : ""}`}
+        </p>
         <button
-          className="bg-blue-400 p-2 rounded-lg font-bold w-32"
+          className="boxShadow-3xl w-1/4 text-sm bg-blue-600 h-3/5 rounded-xl"
           type="button"
           onClick={() => {
             setSideList(!sideList);
@@ -78,6 +74,13 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
         >
           {sideList ? "Seguir añadiendo" : `Ver Items`}
         </button>
+        <NavLink
+            to="/carrito/"
+            className="shadow-2xl w-1/4 text-sm flex flex-col items-center justify-center bg-blue-600 h-3/5 rounded-xl"
+          >
+            Realizar el pago
+            <PAy />
+          </NavLink>
       </div>
     </div>
   );
