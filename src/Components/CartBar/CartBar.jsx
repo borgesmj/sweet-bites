@@ -15,7 +15,7 @@ const CartBar = ({ shoppingCart, eliminarProducto }) => {
   }, 0);
 
   return (
-    <div className="fixed z-[0] bottom-0 right-0 md:right-0 w-full md:w-2/5 bg-driftwood-300 px-4 flex flex-col">
+    <div className="font-sans fixed z-[0] bottom-0 right-0 md:right-0 w-full md:w-2/5 bg-driftwood-300 px-4 flex flex-col">
       {sideList && (
         <div className="py-8 my-4 w-full flex flex-col justify-between">
           <h1 className="text-2xl">Items:</h1>
