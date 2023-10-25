@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import TrashCan from "../../Icons/TrashCan";
 import CartItem from "../../Components/CartItem.jsx/CartItem";
 import Whatsapp from "../../Icons/Whatsapp";
+import Loader from '../../Components/Loader/Loader'
 
 const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [delivery, setDelivery] = useState(false);
@@ -11,6 +12,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [direccion, setDireccion] = useState("");
   const [comentario, setComentario] = useState("");
   const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false)
 
   const subTotalArray = shoppingCart.map((item) => {
     return item.total;
@@ -22,40 +24,45 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let mensajeEnvio = `Hola, quisiera realizar un pedido.\nañadiré estos productos\n==============`;
-    shoppingCart.forEach((item) => {
-      mensajeEnvio += `\n**${item.cantidad}  ${item.name}`;
-    });
-    mensajeEnvio += `\n==============`;
-    if (!delivery) {
-      mensajeEnvio += `\nYo pasaré a recoger la orden`;
+    setLoader(true)
+    setTimeout(() => {
+      let mensajeEnvio = `Hola, quisiera realizar un pedido.\nañadiré estos productos\n==============`;
+      shoppingCart.forEach((item) => {
+        mensajeEnvio += `\n**${item.cantidad}  ${item.name}`;
+      });
       mensajeEnvio += `\n==============`;
-    } else {
-      if ([nombre, telefono, direccion].includes("")) {
-        setError(true);
-        return;
-      } else {
-        mensajeEnvio += `\nPara entregar a domicilio\n`;
-        mensajeEnvio += `\nA nombre de: ${nombre}`;
-        mensajeEnvio += `\nDireccion: ${direccion}`;
-        mensajeEnvio += `\nTeléfono: ${telefono}`;
+      if (!delivery) {
+        mensajeEnvio += `\nYo pasaré a recoger la orden`;
         mensajeEnvio += `\n==============`;
+      } else {
+        if ([nombre, telefono, direccion].includes("")) {
+          setError(true);
+          return;
+        } else {
+          mensajeEnvio += `\nPara entregar a domicilio\n`;
+          mensajeEnvio += `\nA nombre de: ${nombre}`;
+          mensajeEnvio += `\nDireccion: ${direccion}`;
+          mensajeEnvio += `\nTeléfono: ${telefono}`;
+          mensajeEnvio += `\n==============`;
+        }
       }
-    }
-    mensajeEnvio += `\nComentario adicicional:`;
-    mensajeEnvio += `\n${comentario}`;
-    mensajeEnvio += `\nSub-Total:${subTotal}`;
-
-    let whatsappLink =
-      "https://api.whatsapp.com/send?phone=573184255610&text=" +
-      encodeURI(mensajeEnvio);
-    window.open(whatsappLink, "_blank");
-
-    setShoppingCart([]);
-    setNombre("");
-    setTelefono("");
-    setComentario("");
-    setDireccion("");
+      mensajeEnvio += `\nComentario adicicional:`;
+      mensajeEnvio += `\n${comentario}`;
+      mensajeEnvio += `\nSub-Total:${subTotal}`;
+  
+      let whatsappLink =
+        "https://api.whatsapp.com/send?phone=573184255610&text=" +
+        encodeURI(mensajeEnvio);
+      window.open(whatsappLink, "_blank");
+  
+      setShoppingCart([]);
+      setNombre("");
+      setTelefono("");
+      setComentario("");
+      setDireccion("");
+      setLoader(false)
+    }, 1500);
+    
   };
 
   return shoppingCart.length === 0 ? (
@@ -202,9 +209,11 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
       <button
         type="submit"
         onClick={handleSubmit}
-        className="w-4/5 flex justify-between mt-4 text-center p-4 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-1/4"
+        className="w-4/5 flex justify-between mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-1/4 relative"
       >
-        Finalizar pedido por WhatsApp <Whatsapp />
+        {
+          loader ? <Loader/> : <div className="flex items-center justify-center">Finalizar pedido por WhatsApp <Whatsapp /></div>
+        }
       </button>
     </form>
   );
