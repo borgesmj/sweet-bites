@@ -48,7 +48,7 @@ const Navbar = ({ categories, shoppingCart }) => {
   }, []);
 
   return (
-    <nav className="h-12 fixed w-full top-0 px-4 flex flex-row justify-between items-center bg-driftwood-500">
+    <nav className="z-[1] h-12 fixed w-full top-0 px-4 flex flex-row justify-between items-center bg-driftwood-500">
       <NavLink to="/" className="h-12 w-12 fixed left-8 z-[1]">
         <img
           src="https://borgesmj.github.io/sweet-bites/src/IMG/Logo.png"
