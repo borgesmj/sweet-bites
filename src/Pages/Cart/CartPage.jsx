@@ -4,6 +4,7 @@ import TrashCan from "../../Icons/TrashCan";
 import CartItem from "../../Components/CartItem.jsx/CartItem";
 import Whatsapp from "../../Icons/Whatsapp";
 import Loader from "../../Components/Loader/Loader";
+import Info from "../../Icons/Info";
 
 const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [delivery, setDelivery] = useState(false);
@@ -22,6 +23,8 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
     return acc + curr;
   }, 0);
 
+  const subTotalFormateado = subTotal.toLocaleString()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoader(true);
@@ -37,6 +40,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
       } else {
         if ([nombre, telefono, direccion].includes("")) {
           setError(true);
+          setLoader(false)
           return;
         } else {
           mensajeEnvio += `\nPara entregar a domicilio\n`;
@@ -51,7 +55,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
       mensajeEnvio += `\nSub-Total:${subTotal}`;
 
       let whatsappLink =
-        "https://api.whatsapp.com/send?phone=573184255610&text=" +
+        "https://api.whatsapp.com/send?phone=573205092268&text=" +
         encodeURI(mensajeEnvio);
       window.open(whatsappLink, "_blank");
 
@@ -104,10 +108,12 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               eliminarProducto={eliminarProducto}
             />
           ))}
+        <tr>
+        <th></th>
           <th></th>
-          <th></th>
-          <th>Sub-Total</th>
-          <th>{subTotal}</th>
+          <th className="md:text-2xl"  >Sub-Total</th>
+          <th className="md:text-2xl"  >{subTotalFormateado} COP</th>
+        </tr>
         </tbody>
       </table>
       <div className=" flex flex-col items-start">
@@ -188,8 +194,8 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               }}
             />
           </div>
-          <span className="text-[10px] sm:text-[15px]">
-            El servicio a domicilio podria tener un cargo adicional.
+          <span className="text-[10px] sm:text-[15px] flex flex-row items-center">
+            <Info/> El servicio a domicilio podria tener un cargo adicional.
           </span>
         </div>
       )}

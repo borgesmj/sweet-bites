@@ -59,8 +59,8 @@
     }
     .carrito::after{
 
-        right: -0.7rem;
-        top: -5px 
+        right: 10%;
+        top: 0 
 
     }
 }

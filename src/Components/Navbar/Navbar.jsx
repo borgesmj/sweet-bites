@@ -73,15 +73,15 @@ const Navbar = ({ categories, shoppingCart }) => {
           <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
           <span className="border-white border-solid border-b-2 w-full opacity-100 rounded-4xl"></span>
         </div>
-        <ul className="navlist z-[2] fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-9/12 lg:w-1/2 md:h-4 md:p-0 md:me-16">
-          <li className="navbar-option hidden md:block  text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90">
+        <ul className="navlist z-[2] fixed w-full bg-driftwood-300 h-full top-12 right-0 flex-col p-4 opacity-0 md:static md:opacity-100 md:flex md:flex-row md:justify-between md:items-center md:w-fit md:h-4 md:p-0 md:me-16">
+          <li className="navbar-option hidden md:block  text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90  md:px-4 md:mx-2">
             <NavLink to="/" className="relative">
               INICIO
             </NavLink>
           </li>
           {categories.map((item) => (
             <li
-              className="navbar-option text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90"
+              className="navbar-option text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90 md:px-4 md:mx-2"
               key={`navoption_${item}`}
             >
               <NavLink to={`/${item}/`} className="relative">
@@ -92,9 +92,9 @@ const Navbar = ({ categories, shoppingCart }) => {
           <li
             className={`navbar-option ${
               shoppingCart.length === 0 ? null : "carrito"
-            } text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90`}
+            } text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90 md:px-4 md:mx-2`}
           >
-            <NavLink to="/carrito/" className="relative">
+            <NavLink to="/carrito/" className="relative ">
               <ShoppingCart />
             </NavLink>
           </li>

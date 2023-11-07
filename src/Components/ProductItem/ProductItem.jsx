@@ -46,7 +46,7 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
       </p>
       <img src={product.image_url} alt="Product Image" className="w-48 h-48" />
       <p>{product.description}</p>
-      <p>
+      <p className="lg:text-2xl">
         Precio: <span id="productPrice">{product.value}</span> COP
       </p>
       {product.available ? (
