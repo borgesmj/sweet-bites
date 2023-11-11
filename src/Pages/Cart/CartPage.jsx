@@ -55,7 +55,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
       mensajeEnvio += `\nSub-Total:${subTotal}`;
 
       let whatsappLink =
-        "https://api.whatsapp.com/send?phone=573205092268&text=" +
+        "https://api.whatsapp.com/send?phone=573184255610&text=" +
         encodeURI(mensajeEnvio);
       window.open(whatsappLink, "_blank");
 
