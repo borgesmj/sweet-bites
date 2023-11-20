@@ -11,7 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 
 // Pages
-import CArtPage from "./Pages/Cart/CArtPage";
+import CArtPage from "./Pages/Cart/CartPage";
 import Homepage from "./Pages/Home/Homepage";
 import ProductsPage from "./Pages/Products/ProductsPage";
 import InitialModal from "./Components/InitialModal/InitialModal";

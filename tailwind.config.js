@@ -35,6 +35,7 @@ export default {
     },
     boxShadow: {
       '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+      'cart-box': '-3px 6px 5px 2px #5a5858'
     }
   },
   plugins: [],
