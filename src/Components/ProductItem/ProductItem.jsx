@@ -41,12 +41,12 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
 
   return (
     <form onSubmit={handleSubmit} className={`${className}`}>
-      <p className="text-4xl" id="productName">
+      <p className="text-2xl md:text-4xl w-full text-center flex content-center items-center mb-4 md:h-40 md:py:4" id="productName">
         {product.name}
       </p>
-      <img src={product.image_url} alt="Product Image" className="w-48 h-48" />
-      <p>{product.description}</p>
-      <p className="lg:text-2xl">
+      <img src={product.image_url} alt="Product Image" className="w-48 h-48 my-4" />
+      <p className="md:text-xl w-full text-center flex content-center items-center md:h-32 ">{product.description}</p>
+      <p className="text-2xl lg:text-4xl my-4">
         Precio: <span id="productPrice">{product.value}</span> COP
       </p>
       {product.available ? (
@@ -88,7 +88,7 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
             : "lg:hover:cursor-not-allowed"
         } relative flex justify-center items-center`}
         type="submit"
-        
+        style={{ fontFamily: 'Red Hat Display, sans-serif', fontWeight: 'bold' }}
       >{
         loader ? <Loader/> : product.available ? "Agregar al carrito" : "Producto no disponible"
       }</button>

@@ -16,9 +16,9 @@ const Homepage = ({
       {categories.map((item) => (
         <div
           key={`homepage_option_${item}`}
-          className="border-dotted border-[#43e09e] border-4 rounded-xl p-4 my-10"
+          className="border-dotted border-[#43e09e] border-4 rounded-xl p-4 my-10 md:my-14 md:h-[60rem] md:py-0 md:px-4 lg:h-[50rem]"
         >
-          <h1 className="text-xl md:text-2xl -mt-12 -ml-8 bg-white w-24 p-2">
+          <h1 className="text-xl md:text-2xl -mt-12 -ml-8 md:-mt-8 bg-white w-24 p-2">
             {item.toUpperCase()}
           </h1>
           <div className="flex flex-col justify-between md:flex-row items-center">
@@ -29,7 +29,7 @@ const Homepage = ({
                 <ProductItem
                   key={`product_key_${product.name}`}
                   product={product}
-                  className="my-8 flex flex-col items-center justify-between bg-blue-100 shadow-2xl md:w-1/3 md:h-[33rem] py-8 px-4 rounded-2xl"
+                  className="my-8 flex flex-col items-center justify-between bg-blue-100 shadow-2xl md:w-[35%] md:h-[55rem] py-8 px-4 rounded-2xl lg:h-[44rem] lg:w-[30%]"
                   setShoppingCart={setShoppingCart}
                   shoppingCart={shoppingCart}
                 />
@@ -47,12 +47,6 @@ const Homepage = ({
           </div>
         </div>
       ))}
-      {shoppingCart.length > 0 && (
-        <CartBar
-          shoppingCart={shoppingCart}
-          eliminarProducto={eliminarProducto}
-        />
-      )}
     </div>
   );
 };

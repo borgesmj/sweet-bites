@@ -16,24 +16,17 @@ const ProductsPage = ({
   return (
     <div className="border-dotted border-[#43e09e] border-4 rounded-xl p-4 my-10">
       <p className="text-4xl">{category.toUpperCase()}</p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 md:place-content-between">
+      <div className="flex flex-row flex-wrap items-center justify-center ">
         {filteredData.map((producto, index) => (
           <ProductItem
             key={`producto_${index}`}
             product={producto}
-            className="flex flex-col justify-between items-center py-8 my-8 md:w-4/5 rounded-2xl bg-blue-100"
+            className="flex flex-col justify-between items-center h-fit py-8 m-4 md:w-2/5 rounded-2xl bg-blue-100 lg:w-1/4 2xl:w-1/5"
             setShoppingCart={setShoppingCart}
             shoppingCart={shoppingCart}
           />
         ))}
       </div>
-      {shoppingCart.length > 0 && (
-        <CartBar
-          shoppingCart={shoppingCart}
-          eliminarProducto={eliminarProducto}
-        />
-      )}
     </div>
   );
 };
