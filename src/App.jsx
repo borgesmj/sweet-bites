@@ -35,6 +35,16 @@ function App() {
   });
 
   useEffect(() => {
+    const obtenerLS = () => {
+      const shoppingList =
+        JSON.parse(localStorage.getItem("shoppingCart")) ?? [];
+      setShoppingCart(shoppingList);
+    };
+
+    obtenerLS();
+  }, []);
+
+  useEffect(() => {
     // se inicializa una constante con la funcion de getFirestore con los keys de firebaseApp
     const db = getFirestore(firebaseApp);
 
@@ -79,6 +89,10 @@ function App() {
     });
     setShoppingCart(filteredData);
   };
+
+  useEffect(() => {
+    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
 
   return (
     <div>
