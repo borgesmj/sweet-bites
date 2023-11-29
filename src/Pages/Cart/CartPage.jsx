@@ -110,7 +110,10 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
     </div>
   ) : (
     <div className="cart-container w-full h-fit flex items-center justify-center lg:w-full">
-      <form className="flex flex-col items-center w-full md:w-4/5 lg:w-3/5" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col items-center w-full md:w-4/5 lg:w-3/5"
+        onSubmit={handleSubmit}
+      >
         {/* tarjeta de lista de productos */}
         <div className="card-container w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Pedido:</p>
@@ -118,15 +121,9 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             <thead className="border-b-2 border-black ">
               <tr>
                 <th></th>
-                <th className="text-center md:text-[20px]">
-                  Producto
-                </th>
-                <th className="text-center md:text-[20px]">
-                  Cant.
-                </th>
-                <th className="text-center md:text-[20px]">
-                  Total
-                </th>
+                <th className="text-center md:text-[20px]">Producto</th>
+                <th className="text-center md:text-[20px]">Cant.</th>
+                <th className="text-center md:text-[20px]">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -142,7 +139,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               ))}
             </tbody>
             <tfoot className="border-t-2 border-black">
-            <tr>
+              <tr>
                 <th></th>
                 <th></th>
                 <th className=" text-[0.8rem] md:text-2xl">Sub-Total</th>
@@ -191,7 +188,9 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="pasaRecoger"
               />
-              <label htmlFor="pasaRecoger" className="text-xl md:text-2xl">Pasar a recoger</label>
+              <label htmlFor="pasaRecoger" className="text-xl md:text-2xl">
+                Pasar a recoger
+              </label>
             </div>
             <div className="campo mb-2">
               <input
@@ -202,7 +201,9 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="entregaDomicilio"
               />
-              <label htmlFor="entregaDomicilio" className="text-xl md:text-2xl">Entrega a Domicilio</label>
+              <label htmlFor="entregaDomicilio" className="text-xl md:text-2xl">
+                Entrega a Domicilio
+              </label>
             </div>
           </div>
         </div>
@@ -254,7 +255,10 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           {delivery && (
             <>
               <div className="w-full flex justify-between mt-4">
-                <label className="w-2/5 text-xl md:text-2xl" htmlFor="direccion">
+                <label
+                  className="w-2/5 text-xl md:text-2xl"
+                  htmlFor="direccion"
+                >
                   Direccion:
                   <span className="font-bold text-[#ff0000] font-serif">*</span>
                 </label>
@@ -299,7 +303,9 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoPago"
                 id="pagoEfectivo"
               />
-              <label htmlFor="pagoEfectivo" className="text-xl md:text-2xl">Efectivo</label>
+              <label htmlFor="pagoEfectivo" className="text-xl md:text-2xl">
+                Efectivo
+              </label>
             </div>
             <div className="campo mb-2">
               <input
@@ -310,7 +316,12 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoPago"
                 id="pagoTransferencia"
               />
-              <label htmlFor="pagoTransferencia" className="text-xl md:text-2xl">Transferencia bancaria Bancolombia</label>
+              <label
+                htmlFor="pagoTransferencia"
+                className="text-xl md:text-2xl"
+              >
+                Transferencia bancaria Bancolombia
+              </label>
             </div>
             <div>
               {!pagoEfectivo && (
@@ -342,10 +353,10 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           ></textarea>
         </div>
         {error && (
-            <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold p-4 my-4">
-              Todos los campos deben ser llenados
-            </p>
-          )}
+          <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold p-4 my-4">
+            Todos los campos deben ser llenados
+          </p>
+        )}
         <button
           type="submit"
           className="w-full flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-2/5 lg:h-20 relative"
