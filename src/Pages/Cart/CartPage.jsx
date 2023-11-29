@@ -110,7 +110,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
     </div>
   ) : (
     <div className="cart-container w-full h-fit flex items-center justify-center lg:w-full">
-      <form className="flex flex-col items-center w-full md:w-4/5 lg:w-3/5">
+      <form className="flex flex-col items-center w-full md:w-4/5 lg:w-3/5" onSubmit={handleSubmit}>
         {/* tarjeta de lista de productos */}
         <div className="card-container w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Pedido:</p>
@@ -348,7 +348,6 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           )}
         <button
           type="submit"
-          onClick={handleSubmit}
           className="w-full flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-2/5 lg:h-20 relative"
         >
           {loader ? (
