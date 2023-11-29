@@ -161,7 +161,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           </p>
           <div className="flex flex-col items-start p-6  w-full">
             <div className="campo mb-2">
-              <label htmlFor="fecha">
+              <label htmlFor="fecha" className="text-xl md:text-2xl">
                 Fecha de entrega:
                 <span className="font-bold text-[#ff0000] font-serif">
                   *
@@ -170,7 +170,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               <input
                 className={`w-3/5 ${
                   error && fecha === "" ? "bg-[#ff000050]" : "bg-blue-100"
-                }`}
+                } text-xl md:text-2xl`}
                 type="date"
                 name="fecha"
                 id="fecha"
@@ -191,7 +191,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="pasaRecoger"
               />
-              <label htmlFor="pasaRecoger">Pasar a recoger</label>
+              <label htmlFor="pasaRecoger" className="text-xl md:text-2xl">Pasar a recoger</label>
             </div>
             <div className="campo mb-2">
               <input
@@ -202,7 +202,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="entregaDomicilio"
               />
-              <label htmlFor="entregaDomicilio">Entrega a Domicilio</label>
+              <label htmlFor="entregaDomicilio" className="text-xl md:text-2xl">Entrega a Domicilio</label>
             </div>
           </div>
         </div>
@@ -210,7 +210,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         <div className="card-container flex flex-col w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Cliente:</p>
           <div className="w-full flex justify-between mt-4">
-            <label className="w-2/5" htmlFor="nombre">
+            <label className="w-2/5 text-xl md:text-2xl" htmlFor="nombre">
               Nombre:
               <span className="font-bold text-[#ff0000] font-serif">
                 *
@@ -231,7 +231,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             />
           </div>
           <div className="w-full flex justify-between mt-4">
-            <label className="w-2/5" htmlFor="telefono">
+            <label className="w-2/5 text-xl md:text-2xl" htmlFor="telefono">
               Telefono de contacto:
               <span className="font-bold text-[#ff0000] font-serif">
                 *
@@ -254,7 +254,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           {delivery && (
             <>
               <div className="w-full flex justify-between mt-4">
-                <label className="w-2/5" htmlFor="direccion">
+                <label className="w-2/5 text-xl md:text-2xl" htmlFor="direccion">
                   Direccion:
                   <span className="font-bold text-[#ff0000] font-serif">*</span>
                 </label>
