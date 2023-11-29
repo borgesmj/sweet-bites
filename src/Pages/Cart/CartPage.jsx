@@ -109,22 +109,22 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
       </p>
     </div>
   ) : (
-    <div className="cart-container w-4/5 ml-8 h-fit flex items-center justify-center lg:w-full">
-      <form className="flex flex-col items-center w-full md:w-1/2 lg:w-1/3">
+    <div className="cart-container w-full h-fit flex items-center justify-center lg:w-full">
+      <form className="flex flex-col items-center w-full md:w-4/5 lg:w-3/5">
         {/* tarjeta de lista de productos */}
         <div className="card-container w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Pedido:</p>
           <table className="w-full">
-            <thead>
+            <thead className="border-b-2 border-black ">
               <tr>
                 <th></th>
-                <th className="border-b-2 border-black text-center">
-                  Nombre del producto
+                <th className="text-center md:text-[20px]">
+                  Producto
                 </th>
-                <th className="border-b-2 border-l-2 border-black text-center">
-                  Cantidad
+                <th className="text-center md:text-[20px]">
+                  Cant.
                 </th>
-                <th className="border-b-2 border-l-2 border-black text-center">
+                <th className="text-center md:text-[20px]">
                   Total
                 </th>
               </tr>
@@ -140,13 +140,15 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                   eliminarProducto={eliminarProducto}
                 />
               ))}
-              <tr>
+            </tbody>
+            <tfoot className="border-t-2 border-black">
+            <tr>
                 <th></th>
                 <th></th>
                 <th className=" text-[0.8rem] md:text-2xl">Sub-Total</th>
                 <th className="md:text-2xl">{subTotalFormateado} COP</th>
               </tr>
-            </tbody>
+            </tfoot>
           </table>
         </div>
         {/* tarjeta de opciones de entrega */}
@@ -158,6 +160,27 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             </span>
           </p>
           <div className="flex flex-col items-start p-6  w-full">
+            <div className="campo mb-2">
+              <label htmlFor="fecha">
+                Fecha de entrega:
+                <span className="font-bold text-[#ff0000] font-serif">
+                  *
+                </span>{" "}
+              </label>
+              <input
+                className={`w-3/5 ${
+                  error && fecha === "" ? "bg-[#ff000050]" : "bg-blue-100"
+                }`}
+                type="date"
+                name="fecha"
+                id="fecha"
+                value={fecha}
+                onChange={(e) => {
+                  setFecha(e.target.value);
+                  setError(false);
+                }}
+              />
+            </div>
             <div className="campo mb-2">
               <input
                 defaultChecked
@@ -181,37 +204,11 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               />
               <label htmlFor="entregaDomicilio">Entrega a Domicilio</label>
             </div>
-            <div className="campo mb-2">
-              <label htmlFor="fecha">
-                Fecha de entrega:
-                <span className="font-bold text-[#ff0000] font-serif">
-                  *
-                </span>{" "}
-              </label>
-              <input
-                className={`w-3/5 ${
-                  error && fecha === "" ? "bg-[#ff000050]" : "bg-blue-100"
-                }`}
-                type="date"
-                name="fecha"
-                id="fecha"
-                value={fecha}
-                onChange={(e) => {
-                  setFecha(e.target.value);
-                  setError(false);
-                }}
-              />
-            </div>
           </div>
         </div>
         {/* tarjeta de detalles del cliente */}
         <div className="card-container flex flex-col w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Cliente:</p>
-          {error && (
-            <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold">
-              Todos los campos deben ser llenados
-            </p>
-          )}
           <div className="w-full flex justify-between mt-4">
             <label className="w-2/5" htmlFor="nombre">
               Nombre:
@@ -302,7 +299,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoPago"
                 id="pagoEfectivo"
               />
-              <label htmlFor="pagoEfectivo">Efectivo</label>
+              <label htmlFor="pagoEfectivo" className="text-xl md:text-2xl">Efectivo</label>
             </div>
             <div className="campo mb-2">
               <input
@@ -313,7 +310,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoPago"
                 id="pagoTransferencia"
               />
-              <label htmlFor="pagoTransferencia">Transferencia bancaria</label>
+              <label htmlFor="pagoTransferencia" className="text-xl md:text-2xl">Transferencia bancaria Bancolombia</label>
             </div>
             <div>
               {!pagoEfectivo && (
@@ -344,10 +341,15 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             onChange={(e) => setComentario(e.target.value)} // Actualiza el estado
           ></textarea>
         </div>
+        {error && (
+            <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold">
+              Todos los campos deben ser llenados
+            </p>
+          )}
         <button
           type="submit"
           onClick={handleSubmit}
-          className="w-4/5 flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-full lg:h-20 relative"
+          className="w-full flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-2/5 lg:h-20 relative"
         >
           {loader ? (
             <Loader />
