@@ -66,6 +66,7 @@ const ProductItem = ({ product, className, setShoppingCart, shoppingCart }) => {
             id="productCantidad"
             value={cantidad}
             disabled
+            style={{ fontFamily: 'Red Hat Display, sans-serif', fontWeight: 'bold' }}
           />
           <button
             className="text-4xl"
