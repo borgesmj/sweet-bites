@@ -342,7 +342,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           ></textarea>
         </div>
         {error && (
-            <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold">
+            <p className="font-serif w-full bg-[#ff0000] text-center text-white uppercase font-bold p-4 my-4">
               Todos los campos deben ser llenados
             </p>
           )}

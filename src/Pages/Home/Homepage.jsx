@@ -16,7 +16,7 @@ const Homepage = ({
       {categories.map((item) => (
         <div
           key={`homepage_option_${item}`}
-          className="border-dotted border-[#43e09e] border-4 rounded-xl p-4 my-10 md:my-14 md:h-[60rem] md:py-0 md:px-4 lg:h-[50rem]"
+          className="border-dotted border-[#43e09e] border-4 rounded-xl p-4 my-10 md:my-14 md:h-[60rem] md:py-0 md:px-4"
         >
           <h1 className="text-xl md:text-2xl -mt-12 -ml-8 md:-mt-8 bg-white w-24 p-2">
             {item.toUpperCase()}
@@ -47,6 +47,12 @@ const Homepage = ({
           </div>
         </div>
       ))}
+      {shoppingCart.length > 0 && (
+        <CartBar
+          shoppingCart={shoppingCart}
+          eliminarProducto={eliminarProducto}
+        />
+      )}
     </div>
   );
 };

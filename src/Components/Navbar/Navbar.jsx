@@ -15,12 +15,7 @@ const Navbar = ({ categories, shoppingCart }) => {
     setNavbarCheck(false);
   }, [location.pathname]);
 
-  useEffect(() => {
-    const carritoElement = document.querySelector(".carrito");
-    if (carritoElement) {
-      carritoElement.setAttribute("data-cart-count", shoppingCart.length);
-    }
-  }, [shoppingCart.length]);
+
 
   useEffect(() => {
     const burgerMenu = document.querySelector(".burger__menu");
@@ -89,15 +84,6 @@ const Navbar = ({ categories, shoppingCart }) => {
               </NavLink>
             </li>
           ))}
-          <li
-            className={`navbar-option ${
-              shoppingCart.length === 0 ? null : "carrito"
-            } text-white mt-4 text-4xl font-bold md:text-xl lg:text-2xl md:mt-0 rounded-lg md:opacity-90 md:px-4 md:mx-2`}
-          >
-            <NavLink to="/carrito/" className="relative ">
-              <ShoppingCart />
-            </NavLink>
-          </li>
         </ul>
       </div>
     </nav>

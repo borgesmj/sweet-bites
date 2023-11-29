@@ -1,0 +1,33 @@
+.carrito{
+    position: relative;
+}
+
+.carrito::after{
+    content: " " attr(data-cart-count);
+    width:1rem;
+    height: 1rem;
+    background-color: #59386b;
+    position: absolute;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0rem; 
+    font-family: sans-serif;
+    font-size: 1rem;
+    border: solid 2px white;
+}
+
+@media (width >= 768px) {
+    .carrito::after{
+        width:2rem;
+        height: 2rem;
+        right: 0;
+        top: -15px;
+        font-size: 2rem;
+    }
+}
+
+

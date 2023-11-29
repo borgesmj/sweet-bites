@@ -27,6 +27,12 @@ const ProductsPage = ({
           />
         ))}
       </div>
+      {shoppingCart.length > 0 && (
+        <CartBar
+          shoppingCart={shoppingCart}
+          eliminarProducto={eliminarProducto}
+        />
+      )}
     </div>
   );
 };
