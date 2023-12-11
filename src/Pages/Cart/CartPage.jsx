@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrashCan from "../../Icons/TrashCan";
 import CartItem from "../../Components/CartItem.jsx/CartItem";
@@ -16,8 +16,21 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [comentario, setComentario] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [fecha, setFecha] = useState("");
+  const [fecha, setFecha] = useState( useEffect(() => {
+    const fecha = new Date()
+    let dia = fecha.getDate()
+    let mes = fecha.getMonth() + 1
+    let ano = fecha.getFullYear()
+    dia = (dia < 10) ? '0' + dia : dia;
+    mes = (mes < 10) ? '0' + mes : mes;
+
+    let fechaFormateada = ano + '-' + mes + '-' + dia
+
+    setFecha(fechaFormateada)
+  }));
   const [pagoEfectivo, setPagoEfectivo] = useState(true);
+
+ 
 
   const subTotalArray = shoppingCart.map((item) => {
     return item.total;
@@ -150,15 +163,15 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         </div>
         {/* tarjeta de opciones de entrega */}
         <div className="card-container flex flex-col w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
-          <p className="text-2xl w-full text-left flex flex-row items-center">
-            Detalles de la entrega:
-            <span className="ml-8">
+          <p className="text-2xl w-full text-left flex flex-row items-center font-bold">
+            <span className="mr-8">
               <Truck />
             </span>
+            Detalles de la entrega:
           </p>
           <div className="flex flex-col items-start p-6  w-full">
-            <div className="campo mb-2">
-              <label htmlFor="fecha" className="text-xl md:text-2xl">
+            <div className="campo mb-2 text-md md:text-xl">
+              <label htmlFor="fecha" className="text-md md:text-xl">
                 Fecha de entrega:
                 <span className="font-bold text-[#ff0000] font-serif">
                   *
@@ -167,7 +180,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               <input
                 className={`w-3/5 ${
                   error && fecha === "" ? "bg-[#ff000050]" : "bg-blue-100"
-                } text-xl md:text-2xl`}
+                } text-md md:text-xl 2xl:text-2xl`}
                 type="date"
                 name="fecha"
                 id="fecha"
@@ -188,7 +201,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="pasaRecoger"
               />
-              <label htmlFor="pasaRecoger" className="text-xl md:text-2xl">
+              <label htmlFor="pasaRecoger" className="text-md md:text-xl 2xl:text-2xl">
                 Pasar a recoger
               </label>
             </div>
@@ -201,7 +214,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoEntrega"
                 id="entregaDomicilio"
               />
-              <label htmlFor="entregaDomicilio" className="text-xl md:text-2xl">
+              <label htmlFor="entregaDomicilio" className="text-md md:text-xl 2xl:text-2xl">
                 Entrega a Domicilio
               </label>
             </div>
@@ -211,7 +224,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         <div className="card-container flex flex-col w-full h-fit rounded-xl p-4 mb-4  shadow-cart-box">
           <p className="text-2xl w-full text-left">Detalles del Cliente:</p>
           <div className="w-full flex justify-between mt-4">
-            <label className="w-2/5 text-xl md:text-2xl" htmlFor="nombre">
+            <label className="w-2/5 text-md md:text-xl 2xl:text-2xl" htmlFor="nombre">
               Nombre:
               <span className="font-bold text-[#ff0000] font-serif">
                 *
@@ -220,7 +233,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             <input
               className={`w-3/5 ${
                 error && nombre === "" ? "bg-[#ff000050]" : "bg-blue-100"
-              }`}
+              } text-md md:text-xl 2xl:text-2xl`}
               type="text"
               name=""
               id="nombre"
@@ -232,7 +245,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             />
           </div>
           <div className="w-full flex justify-between mt-4">
-            <label className="w-2/5 text-xl md:text-2xl" htmlFor="telefono">
+            <label className="w-2/5 text-md md:text-xl 2xl:text-2xl" htmlFor="telefono">
               Telefono de contacto:
               <span className="font-bold text-[#ff0000] font-serif">
                 *
@@ -256,7 +269,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
             <>
               <div className="w-full flex justify-between mt-4">
                 <label
-                  className="w-2/5 text-xl md:text-2xl"
+                  className="w-2/5 text-md md:text-xl 2xl:text-2xl"
                   htmlFor="direccion"
                 >
                   Direccion:
@@ -265,7 +278,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 <input
                   className={`w-3/5 ${
                     error && direccion === "" ? "bg-[#ff000050]" : "bg-blue-100"
-                  }`}
+                  } text-md md:text-xl 2xl:text-2xl`}
                   type="text"
                   name=""
                   id="direccion"
@@ -303,7 +316,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
                 name="tipoPago"
                 id="pagoEfectivo"
               />
-              <label htmlFor="pagoEfectivo" className="text-xl md:text-2xl">
+              <label htmlFor="pagoEfectivo" className="text-md md:text-xl 2xl:text-2xl">
                 Efectivo
               </label>
             </div>
@@ -318,21 +331,22 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
               />
               <label
                 htmlFor="pagoTransferencia"
-                className="text-xl md:text-2xl"
+                className="text-md md:text-xl 2xl:text-2xl"
               >
                 Transferencia bancaria Bancolombia
               </label>
             </div>
-            <div>
+            <div className="w-full">
               {!pagoEfectivo && (
-                <>
+                <div className="w-full flex justify-center flex-col items-center">
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/sweet-bites-922e3.appspot.com/o/QR%2Fphoto_5111867688153624041_x.jpg?alt=media&token=01955cd6-e02e-445e-b602-4ba1d3d26afa"
                     alt=""
+                    className="m-auto h-56"
                   />
                   <p className="font-serif">Nombre: Arismer Briceño</p>
                   <p className="font-serif">Producto destino: Ahorros *9284</p>
-                </>
+                </div>
               )}
             </div>
           </div>
@@ -340,14 +354,14 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         {/* comentario */}
         <div className="w-full flex flex-col justify-between mt-4 rounded-xl shadow-cart-box  p-4">
           <label htmlFor="comentario">
-            <p className="text-2xl w-full text-left">Comentario:</p>
+            <p className="text-md md:text-xl 2xl:text-2xl w-full text-left">Comentario:</p>
           </label>
           <textarea
             name="comentario"
             id="comentario"
             cols="30"
             rows="4"
-            className="w-full bg-blue-100"
+            className="w-full bg-blue-100 "
             value={comentario} // Valor inicial
             onChange={(e) => setComentario(e.target.value)} // Actualiza el estado
           ></textarea>

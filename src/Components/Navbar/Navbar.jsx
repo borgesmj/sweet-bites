@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { NavLink, useLocation } from "react-router-dom";
-import ShoppingCart from "../../Icons/ShoppingCart";
 
 const Navbar = ({ categories, shoppingCart }) => {
   const [navbarCheck, setNavbarCheck] = useState(false);
