@@ -7,6 +7,7 @@ import Loader from "../../Components/Loader/Loader";
 import Info from "../../Icons/Info";
 import Truck from "../../Icons/Truck";
 import Pay from "../../Icons/PAy";
+import './CartPage.css'
 
 const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [delivery, setDelivery] = useState(false);
@@ -16,7 +17,11 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
   const [comentario, setComentario] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [fecha, setFecha] = useState( useEffect(() => {
+  const [fecha, setFecha] = useState('');
+  const [pagoEfectivo, setPagoEfectivo] = useState(true);
+  const [click, setClick] = useState(false)
+
+  useEffect(() => {
     const fecha = new Date()
     let dia = fecha.getDate()
     let mes = fecha.getMonth() + 1
@@ -27,8 +32,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
     let fechaFormateada = ano + '-' + mes + '-' + dia
 
     setFecha(fechaFormateada)
-  }));
-  const [pagoEfectivo, setPagoEfectivo] = useState(true);
+  }, [])
 
  
 
@@ -110,6 +114,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
     }
   };
 
+  
   return shoppingCart.length === 0 ? (
     <div className="shoppin_cart h-[32rem] w-full flex justify-center items-center flex-col">
       <h1 className="text-2xl">Aun no hay productos agregados</h1>
@@ -373,16 +378,16 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         )}
         <button
           type="submit"
-          className="w-full flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] border-white border-[5px] rounded-[5rem] md:justify-center md:w-1/2 lg:w-2/5 lg:h-20 relative"
+          className={`${!loader ? 'btnSend' : ''} w-full flex justify-center items-center mt-4 text-center p-4 h-16 bg-[#25d366] rounded-[5rem] text-white font-serif shadow-cart-box text-[15px] md:w-1/2 lg:text-xl relative`}
         >
           {loader ? (
             <Loader />
           ) : (
-            <div className="flex flex-col items-center">
-              <span className="text-[10px] lg:text-2xl">
+            <div className="flex flex-row items-center space-x-1">
+              <span className="">
                 Finalizar pedido por WhatsApp
               </span>{" "}
-              <span>
+              <span className="ml-[5px]">
                 <Whatsapp />
               </span>
             </div>
