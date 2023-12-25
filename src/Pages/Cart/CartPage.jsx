@@ -68,6 +68,7 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
         let mensajeEnvio = `Hola, quisiera realizar un pedido.\n==============\n📝 Productos:`;
         shoppingCart.forEach((item) => {
           mensajeEnvio += `\n✔️ ${item.cantidad}  ${item.name}`;
+        });
           mensajeEnvio += `\n==============`;
           mensajeEnvio += `\nPara entregarlo en dia: ${fecha}`;
           mensajeEnvio += `\n==============`;
@@ -105,7 +106,6 @@ const CArtPage = ({ shoppingCart, eliminarProducto, setShoppingCart }) => {
           setFecha("");
           setShoppingCart([]);
           setPagoEfectivo(true);
-        });
         let whatsappLink =
           "https://api.whatsapp.com/send?phone=573184255610&text=" +
           encodeURI(mensajeEnvio);
