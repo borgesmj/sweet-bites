@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "ritwickdey.liveserver",
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-complete-tag",
+        "pranaygp.vscode-css-peek",
+        "humao.rest-client",
+        "esbenp.prettier-vscode",
+        "usernamehw.errorlens",
+        "aaron-bond.better-comments",
+        "oderwat.indent-rainbow",
+        "bradlc.vscode-tailwindcss",
+          ]
+    }
