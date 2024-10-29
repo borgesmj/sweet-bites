@@ -14,6 +14,7 @@
   --bg-200:#ebebeb;
   --bg-300:#c2c2c2;
   --mobile-header-height: 70px;
+  --hero-height: calc(100dvh - var(--mobile-header-height))
 }
 
 

@@ -1,5 +1,5 @@
 import "./globals.css";
-import Header from "./ui/header";
+import Header from "./ui/Components/header";
 import { inter } from "@/app/ui/fonts";
 
 export const metadata = {
