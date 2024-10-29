@@ -13,8 +13,8 @@ export default function Header() {
                 <Image src="/Logo-desktop.png" width={200} height={50} alt="Logo" className="hidden lg:block" />
             </a>
             <Navlinks />
-            <div className="relative h-[50px] w-[50px] flex flex-col justify-center items-center  before:bg-red-500 before:absolute before:top-0 before:right-0 before:w-6 before:h-6 before:content-['4'] before:rounded-full before:text-white before:text-center before:font-bold before:text-md">
-                <LuShoppingBag size="3em" />
+            <div className="relative h-[50px] w-[50px] flex flex-col justify-center items-center  before:bg-red-500 before:absolute before:top-0 before:right-0 before:w-6 before:h-6 before:content-['4'] before:rounded-full before:text-white before:text-center before:font-bold before:text-md cursor-pointer">
+                <LuShoppingBag size="2em" />
             </div>
 
         </header>
