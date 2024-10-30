@@ -1,6 +1,7 @@
 import Hero from "@/ui/Home/Hero";
 import MasVendidos from "./ui/Home/MasVendidos";
 import Info from "./ui/Home/Info";
+import Socials from "./ui/Home/Socials";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero/>
       <MasVendidos/>
       <Info/>
+      <Socials/>
     </div>
   );
 }

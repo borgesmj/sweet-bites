@@ -38,7 +38,7 @@ export default function Hero() {
             id: 6,
             src: "/chocolate-chips-cookie.png",
             alt: "Chocolate chips cookie",
-            className: "hidden"
+            className: "hidden xl:block xl:absolute xl:bottom-[-9rem]"
         },
 
     ]
