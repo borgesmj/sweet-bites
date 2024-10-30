@@ -1,6 +1,6 @@
 import "./globals.css";
-import Header from "./ui/Components/header";
-import { inter } from "@/app/ui/fonts";
+import Header from "@/ui/Components/header";
+import { inter } from "@/ui/fonts";
 
 export const metadata = {
   title: "Create Next App",
