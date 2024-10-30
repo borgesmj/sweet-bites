@@ -29,9 +29,8 @@ body {
 
 }
 
-.scroll-snap-x{
-  scroll-snap-type: x mandatory;
-}
+
+
 @media (width < 768px) {
 
   #burger-menu span{
