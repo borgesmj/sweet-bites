@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link"
 import { RiArrowRightWideFill } from "react-icons/ri";
+import { caveat } from "../fonts";
 export default function Hero() {
     const cookiesImages = [
         {
@@ -45,7 +46,7 @@ export default function Hero() {
         <section className=" relative w-dvw max-w-dvw h-[--hero-height] flex flex-col justify-center items-center md:h-[600px] overflow-hidden">
             <div className="flex flex-col justify-center items-center">
                 <Image src="/Logo-desktop.png" width={350} height={200} alt="Logo hero sweet bites" />
-                <h1>Desde nuestra casa a la tuya.</h1>
+                <h1 className={`${caveat.className} font-[400] text-[2rem] md:text-[3rem]`}>Desde nuestra casa a la tuya.</h1>
             </div>
             <Link href="/tienda" className="py-[10px] bg-[--primary-300] h-[50px] flex justify-around items-center text-[20px] px-[10px] mt-8 font-[600] text-[--bg-100] transition-fast group w-[140pxpx] lg:w-[200px] border-none">
                 <RiArrowRightWideFill className="h-full hidden text-[--bg-100] transition-fast lg:block lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100"/>

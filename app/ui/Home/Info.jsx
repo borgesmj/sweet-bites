@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Asterisk from "@/ui/Icons/Asterisk"
 
 const infoList = [
     {
@@ -16,20 +17,25 @@ const infoList = [
 ]
 export default function Info() {
     return (
-        <div className="w-full flex flex-col items-center p-4 md:flex-row-reverse md:justify-around">
+        <div className="w-full flex flex-col items-center p-4 md:flex-row-reverse md:justify-around gap-4">
             <Image src="/tray-w-coockies.png" width="300" height="300" alt="tray with cookies" className="block xl:hidden" />
             <Image src="/tray-w-coockies.png" width="400" height="400" alt="tray with cookies" className="hidden xl:block" />
-            <ul id="home-list" className="p-4 w-[300px] gap-4 flex flex-col xl:w-[400px]">
+            <div id="info-list" className="flex flex-col w-full md:w-1/2">
                 {
                     infoList.map((info, index) => (
-                        <li key={`info-${index}`} className="list-item justify-center items-start h-fit relative">
-                             <span className="w-6 h-6 absolute -left-8 top-8 bg-[url('/asterisk.svg')] bg-no-repeat"></span>
-                            <h3 className="text-xl font-bold">{info.title} </h3>
-                            <p>{info.description}</p>
-                        </li>
+                        <div key={`info-${index}`} className="info-card w-full flex flex-col gap-2 p-4  lg:flex-row lg:items-center">
+                            <span className="w-full flex justify-center items center lg:w-10">
+                                <Asterisk />
+                            </span>
+                            <div className="flex flex-col items-start justify center">
+                                <h3 className="font-[600] text-[20px] lg:text-[30px]">{info.title}</h3>
+                                <p>{info.description}</p>
+                            </div>
+                        </div>
                     ))
                 }
-            </ul>
+
+            </div>
         </div>
     );
 }
