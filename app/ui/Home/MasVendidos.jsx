@@ -7,6 +7,8 @@ export default function MasVendidos() {
                 <ProductCard/>
                 <ProductCard/>
                 <ProductCard/>
+                <ProductCard/>
+                <ProductCard/>
             </div>
         </div>
     );
