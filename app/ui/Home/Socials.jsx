@@ -22,7 +22,7 @@ export default function Socials() {
                             <FaFacebookF size="2em" />
                         </span>
                         <div className="flex flex-row items-center gap-2 p-4 h-6 ">
-                            <RiArrowRightWideFill size="1.5em" className="transition-fast lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100" />
+                            <RiArrowRightWideFill size="1.5em" className="hidden lg:block transition-fast lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100" />
                             <span className="text-white font-[600] group-hover:translate-x-6 transition-fast">Facebook</span>
                             <RiArrowRightWideFill size="1.5em" className="transition-fast lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
                         </div>
@@ -32,7 +32,7 @@ export default function Socials() {
                             <FaInstagram size="2em" />
                         </span>
                         <div className="flex flex-row items-center gap-2 p-4 h-6 ">
-                            <RiArrowRightWideFill size="1.5em" className="transition-fast lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100" />
+                            <RiArrowRightWideFill size="1.5em" className="hidden lg:block transition-fast lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100" />
                             <span className="text-white font-[600] group-hover:translate-x-6 transition-fast">Instagram</span>
                             <RiArrowRightWideFill size="1.5em" className="transition-fast lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
                         </div>
