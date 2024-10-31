@@ -24,11 +24,11 @@ export default function Info() {
                 {
                     infoList.map((info, index) => (
                         <div key={`info-${index}`} className="info-card w-full flex flex-col gap-2 p-4  lg:flex-row lg:items-center">
-                            <span className="w-full flex justify-center items center lg:w-10">
+                            <span className="w-full flex justify-center items center lg:w-10 text-[--button-bg-primary]">
                                 <Asterisk />
                             </span>
                             <div className="flex flex-col items-start justify center">
-                                <h3 className="font-[600] text-[20px] lg:text-[30px]">{info.title}</h3>
+                                <h3 className="font-[600] text-[25px] lg:text-[30px] w-full text-center lg:text-left">{info.title}</h3>
                                 <p>{info.description}</p>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ export default function Template() {
             </div>
             <a href="#" className="w-full flex flex-row gap-2 items-center justify-start text-blue-800 font-[500]"><span>Ver mas</span><RiArrowRightWideFill/></a>
             <p className="text-2xl font-[600] max-w-full">$15.000</p>
-            <div className="w-full bg-[--primary-300] py-4 px-6 text-center rounded-xl text-white font-bold cursor-pointer opacity-90 lg:opacity-80 transition-fast lg:hover:opacity-100">Añadir al carrito</div>
+            <div className="w-full bg-[--button-bg-primary] py-4 px-6 text-center rounded-xl text-white font-bold cursor-pointer opacity-90  transition-fast lg:hover:bg-[--button-bg-primary-hover]">Añadir al carrito</div>
         </div>
     );
 }
