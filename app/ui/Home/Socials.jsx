@@ -8,7 +8,7 @@ export default function Socials() {
         <div className="w-full bg-[--accent-100] text-[--bg-100] py-4 px-3 flex flex-col items-center lg:flex-row justify-center relative lg:justify-end">
             <div className="pictures lg:flex lg:w-[450px] lg:justify-center lg:items-center lg:absolute lg:left-4 top-0 xl:left-12 2xl:left-[8rem]">
                 <Image src="/chocolate-cookies.png" alt="cookies" width="400" height="400" className="hidden lg:block [filter:_drop-shadow(2px_2px_2px_#ffffff)]" />
-                <Image src="/chocolate-cookies.png" alt="cookies" width="200" height="200" className="block lg:hidden [filter:_drop-shadow(2px_2px_2px_#ffffff)] [box-shadow:_0px_5px_15px_rgba(0,_0,_0,_0.3)]" />
+                <Image src="/chocolate-cookies.png" alt="cookies" width="200" height="200" className="block lg:hidden [filter:_drop-shadow(2px_2px_2px_#ffffff)]" />
             </div>
             <div className="sociales flex flex-col gap-4 w-full lg:w-[600px] items-center justify-center  lg:flex-row xl:w-1/2 xl:mr-20 2xl:mr-40">
                 <div className=" w-full flex flex-col gap-4 md:w-2/3">
