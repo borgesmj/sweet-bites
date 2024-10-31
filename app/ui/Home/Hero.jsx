@@ -43,7 +43,7 @@ export default function Hero() {
 
     ]
     return (
-        <section className=" relative w-dvw max-w-dvw h-[--hero-height] flex flex-col justify-center items-center md:h-[600px] overflow-hidden">
+        <section className=" relative w-100% max-w-dvw h-[--hero-height] flex flex-col justify-center items-center md:h-[600px] overflow-hidden">
             <div className="flex flex-col justify-center items-center">
                 <Image src="/Logo-desktop.png" width={350} height={200} alt="Logo hero sweet bites" />
                 <h1 className={`${caveat.className} font-[400] text-[2rem] md:text-[3rem]`}>Desde nuestra casa a la tuya.</h1>
