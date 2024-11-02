@@ -14,9 +14,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} antialiased`}
       >
-        <Header/>
-        {children}
-        <Footer/>
+        <Header />
+        <main className="mt-[--header-height] w-full">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
