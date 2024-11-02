@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
-    console.log(new Date().getUTCFullYear())
+
     const navlinks = [
         {
             href: "/tienda",
