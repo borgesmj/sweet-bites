@@ -33,7 +33,8 @@ export default function Footer() {
                     }
                 </div>
                 <div className="flex flex-row justify-around items-center w-full md:flex-col md:w-10 md:gap-4  xl:flex-row xl:w-fit xl:gap-4">
-                    <a className="text-center  text-[--button-bg-primary] p-2 border-solid border-2 border-[--button-bg-primary] rounded-lg"  href="#"><FaFacebookF  size={32}/></a><a className="text-center  text-[--button-bg-primary] p-2 border-solid border-2 border-[--button-bg-primary] rounded-xl"  href="#"><FaInstagram size={32} /></a>
+                    <a className="text-center  text-[--button-bg-primary] p-2 border-solid border-2 border-[--button-bg-primary] rounded-lg transition-all hover:bg-[--button-bg-primary] hover:border-[--bg-100] hover:text-[--bg-100]" href="#"><FaFacebookF size={32} /></a>
+                    <a className="text-center  text-[--button-bg-primary] p-2 border-solid border-2 border-[--button-bg-primary] rounded-xl transition-all hover:bg-[--button-bg-primary] hover:border-[--bg-100] hover:text-[--bg-100]" href="#"><FaInstagram size={32} /></a>
                 </div>
             </div>
             <p className="text-center text-sm mt-4 text-gray-400">&copy; {new Date().getUTCFullYear()} Sweet Bites. Todos los derechos reservados.</p>
