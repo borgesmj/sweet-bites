@@ -25,7 +25,7 @@ export default function Template() {
         <RiArrowRightWideFill className="transition-all lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
       </a>
       <p className="text-2xl font-[600] max-w-full">$15.000</p>
-      <div className="relative add-btn w-full bg-[--button-bg-primary] py-4 px-6 text-center rounded-md text-white font-bold cursor-pointer opacity-100  transition-fast  group before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all">
+      <div className="relative add-btn w-full bg-[--button-bg-primary] py-4 px-6 text-center rounded-md text-white font-bold cursor-pointer opacity-100  transition-fast  group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all">
         <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
           Añadir al carrito
         </span>
