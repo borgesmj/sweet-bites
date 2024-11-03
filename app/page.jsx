@@ -2,8 +2,10 @@ import Hero from "@/ui/Home/Hero";
 import MasVendidos from "./ui/Home/MasVendidos";
 import Info from "./ui/Home/Info";
 import Socials from "./ui/Home/Socials";
+import {fetchData} from '@/lib/actions'
+export default async function Home() {
 
-export default function Home() {
+
   return (
     <div>
       <Hero/>
