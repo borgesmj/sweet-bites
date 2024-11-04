@@ -10,6 +10,7 @@
     pkgs.nodePackages.pnpm
     pkgs.bun
     pkgs.tree
+    pkgs.nano
   ];
   # Sets environment variables in the workspace
   env = { };
