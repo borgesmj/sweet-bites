@@ -1,7 +1,6 @@
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
 import Navlinks from "./Navlinks";
-import { LuShoppingBag } from "react-icons/lu";
 import ShoppingBagBtn from "@/ui/ShoppingBagBtn";
 export default function Header() {
   return (
