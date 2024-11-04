@@ -46,7 +46,7 @@ export default function Page() {
 
   return (
     <div>
-      <Filters categories={categories} currentCategory={currentCategory}/>
+      <Filters categories={categories} currentCategory={currentCategory} />
       <div
         id="products-grid"
         className="mx-auto grid w-full p-4  grid-cols-1 justify-items-center gap-y-4 md:w-4/5 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-full xl:grid-cols-4 2xl:w-3/4"

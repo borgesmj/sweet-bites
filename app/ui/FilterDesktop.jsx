@@ -9,7 +9,6 @@ export default function FilterDesktop({ categories, currentCategory }) {
         router.push(`/tienda?categoria=${category}`)
     }
   };
-  console.log(currentCategory)
   return (
     <div className="hidden lg:flex  w-full p-6  mx-auto flex-row items-center justify-center gap-2 text-xl text-[--text-100] font-semibold ">
       <p className="text-right  w-1/2 mr-4">Filtrar por:</p>
