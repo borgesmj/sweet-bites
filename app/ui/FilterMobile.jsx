@@ -1,5 +1,4 @@
-export default function FilterMobile({categories}) {
-    console.log(categories)
+export default function FilterMobile({ categories }) {
     return (
         <div className="w-full p-4 bg-[--accent-100] text-xl font-semibold text-[--bg-100] flex flex-row items-center justify-between lg:hidden">
             <p className="w-1/3">Filtrar por:</p>

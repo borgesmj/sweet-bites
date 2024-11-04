@@ -4,7 +4,7 @@ import Image from "next/image";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useState } from "react";
-import { addToCart } from "@/lib/addToCart";
+import { addToCart } from "@/lib/actions";
 export default function Template({ productInfo }) {
   const [addingToCart, setAddingToCart] = useState(false);
   const handleAddToCard = (id) => {
@@ -58,7 +58,7 @@ export default function Template({ productInfo }) {
         className={`h-14 relative add-btn w-full bg-[--button-bg-primary] py-4 px-6 text-center rounded-md text-white font-bold cursor-pointer opacity-100  ${
           !addingToCart
             ? 'transition-fast  group lg:before:content-["+"] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all'
-            : null
+            : 'cursor-not-allowed group'
         }`}
       >
         {addingToCart ? (

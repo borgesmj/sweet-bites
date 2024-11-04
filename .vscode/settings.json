@@ -15,7 +15,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -78,7 +78,8 @@
           "bold": false,
           "italic": false
         }
-      ]
+      ],
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
       
       
 }
