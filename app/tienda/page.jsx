@@ -1,5 +1,5 @@
 import Filters from "@/ui/Tienda/Filters";
-import ProductCard from "@/ui/Components/ProductCard";
+import ProductCard from "@/ui/ProductCard";
 import {fetchData} from '@/lib/actions'
 export default async function Page() {
     //const categories = ["galletas", "brownies", "panaderia"]

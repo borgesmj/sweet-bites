@@ -1,5 +1,5 @@
-import FilterMobile from "../Components/FilterMobile";
-import FilterDesktop from "../Components/FilterDesktop";
+import FilterMobile from "../FilterMobile";
+import FilterDesktop from "../FilterDesktop";
 export default function Filters({categories}) {
 
     return (

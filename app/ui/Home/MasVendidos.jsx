@@ -1,4 +1,4 @@
-import ProductCard from '@/ui/Components/ProductCard'
+import ProductCard from '@/ui/ProductCard'
 import {fetchData} from '@/lib/actions'
 export default async function MasVendidos({sellestProducts}) {
     const fetchedData = await fetchData()

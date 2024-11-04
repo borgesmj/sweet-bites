@@ -1,6 +1,6 @@
 import "./globals.css";
-import Header from "@/ui/Components/header";
-import Footer from '@/ui/Components/Footer'
+import Header from "@/ui/header";
+import Footer from '@/ui/Footer'
 import { inter } from "./ui/fonts";
 
 export const metadata = {
