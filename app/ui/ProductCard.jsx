@@ -28,10 +28,11 @@ export default function Template({ productInfo }) {
       <div className="image-container w-full h-[200px] bg-transparent">
       <Image
         src={productInfo.image}
-        width="200"
-        height="200"
+        width="150"
+        height="150"
         alt={productInfo.title}
-        className="mx-auto h-full w-auto object-contain"
+        className="w-full h-full object-contain" 
+        priority
       />
       </div>
       <div className="flex flex-col w-full">
