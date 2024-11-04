@@ -25,13 +25,15 @@ export default function Template({ productInfo }) {
       id={`product-cart-id-${productInfo.id}`}
       className="whitespace-nowrap w-[300px] p-4 bg-[--bg-200] flex flex-col gap-4 justify-center items-start"
     >
+      <div className="image-container w-full h-[200px] bg-transparent">
       <Image
         src={productInfo.image}
-        width="300"
-        height="300"
-        alt="Chocolate chips cookie"
-        className="w-auto max-h-[200px] object-contain mx-auto"
+        width="200"
+        height="200"
+        alt={productInfo.title}
+        className="mx-auto h-full w-auto object-contain"
       />
+      </div>
       <div className="flex flex-col w-full">
         <h2 className="text-2xl font-[600] max-w-full conta">
           {productInfo.title.length > 18
