@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/ui/Header";
 import Footer from '@/ui/Footer'
 import { inter } from "./ui/fonts";
+import SizeModal from "./ui/SizeModal";
 
 export const metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <SizeModal/>
       </body>
     </html>
   );

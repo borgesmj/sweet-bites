@@ -24,3 +24,23 @@ export function fetchCategories(products) {
   });
   return categories;
 }
+
+export function openModal() {
+  const modal = document.getElementById('size-modal')
+  document.getElementsByTagName('html')[0].classList.add('no-scroll')
+  modal.classList.remove('hidden')
+  modal.classList.add('flex')
+  modal.classList.add('scale-in-ver-bottom')
+}
+
+export function closeModal() {
+  const modal = document.getElementById('size-modal')
+  document.getElementsByTagName('html')[0].classList.remove('no-scroll')
+  modal.classList.remove('flex')
+  modal.classList.remove('scale-in-ver-bottom')
+  modal.classList.add('scale-out-ver-bottom')
+  setTimeout(() => {
+    modal.classList.add('hidden')
+  }, 500);
+}
+

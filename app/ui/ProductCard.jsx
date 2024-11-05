@@ -4,6 +4,7 @@ import Image from "next/image";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useState } from "react";
+import { openModal } from "@/lib/actions";
 export default function Template({
   productInfo,
   addingToCart,
@@ -13,9 +14,9 @@ export default function Template({
   const handleAddToCard = (id) => {
     setThisCardAddingToCart(true);
     setAddingToCart(true);
+    openModal()
   };
-  console.log(`adding to cart: ${addingToCart}`);
-  console.log(`this card: ${thisCardAddinToCart}`);
+
   return (
     <div
       id={`product-cart-id-${productInfo.id}`}
