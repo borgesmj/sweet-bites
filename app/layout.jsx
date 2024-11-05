@@ -1,5 +1,5 @@
 import "./globals.css";
-import Header from "@/ui/header";
+import Header from "@/ui/Header";
 import Footer from '@/ui/Footer'
 import { inter } from "./ui/fonts";
 
