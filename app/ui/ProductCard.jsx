@@ -5,35 +5,32 @@ import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useState } from "react";
 import { addToCart } from "@/lib/actions";
-export default function Template({ productInfo }) {
-  const [addingToCart, setAddingToCart] = useState(false);
+export default function Template({
+  productInfo,
+  addingToCart,
+  setAddingToCart,
+}) {
+  const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
   const handleAddToCard = (id) => {
+    setThisCardAddingToCart(true);
     setAddingToCart(true);
-    setTimeout(() => {
-      try {
-        addToCart(id)
-      } catch (error) {
-        error
-      } finally{
-        setAddingToCart(false)
-      }
-      
-    }, 800);
   };
+  console.log(`adding to cart: ${addingToCart}`);
+  console.log(`this card: ${thisCardAddinToCart}`);
   return (
     <div
       id={`product-cart-id-${productInfo.id}`}
       className="whitespace-nowrap w-[300px] p-4 bg-[--bg-200] flex flex-col gap-4 justify-center items-start"
     >
       <div className="image-container w-full h-[200px] bg-transparent">
-      <Image
-        src={productInfo.image}
-        width="150"
-        height="150"
-        alt={productInfo.title}
-        className="w-full h-full object-contain" 
-        priority
-      />
+        <Image
+          src={productInfo.image}
+          width="150"
+          height="150"
+          alt={productInfo.title}
+          className="w-full h-full object-contain"
+          priority
+        />
       </div>
       <div className="flex flex-col w-full">
         <h2 className="text-2xl font-[600] max-w-full conta">
@@ -53,25 +50,28 @@ export default function Template({ productInfo }) {
         <RiArrowRightWideFill className="transition-all lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
       </a>
       <p className="text-2xl font-[600] max-w-full">{`$${productInfo.price}`}</p>
-      <div
-        id={`addCartBtn-id-${productInfo.id}`}
+      <button
         onClick={() => {
           handleAddToCard(productInfo.id);
         }}
-        className={`h-14 relative add-btn w-full bg-[--button-bg-primary] py-4 px-6 text-center rounded-md text-white font-bold cursor-pointer opacity-100  ${
-          !addingToCart
-            ? 'transition-fast  group lg:before:content-["+"] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all'
-            : 'cursor-not-allowed group'
+        disabled={addingToCart}
+        id={`addCartBtn-id-${productInfo.id}`}
+        className={`h-14 relative w-full py-4 px-6 text-center rounded-md  font-bold transition-all ${
+          addingToCart
+            ? "bg-gray-400 text-gray-500 opacity-70 cursor-not-allowed"
+            : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
         }`}
       >
-        {addingToCart ? (
+        {addingToCart && thisCardAddinToCart ? (
           <SVGComponent />
+        ) : addingToCart ? (
+          <span>Elige el tamaño</span>
         ) : (
           <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
             Añadir al carrito
           </span>
         )}
-      </div>
+      </button>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function Page() {
   const [loadingPage, setLoadingPage] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("");
+  const [addingToCart, setAddingToCart] = useState(false);
   const searchParams = useSearchParams();
   const category = searchParams.get("categoria");
   useEffect(() => {
@@ -56,7 +57,12 @@ export default function Page() {
               <SkeletonCard key={index} />
             ))
           : filteredProducts.map((product) => (
-              <ProductCard productInfo={product} key={product.id} />
+              <ProductCard
+                productInfo={product}
+                key={product.id}
+                addingToCart={addingToCart}
+                setAddingToCart={setAddingToCart}
+              />
             ))}
       </div>
     </div>
