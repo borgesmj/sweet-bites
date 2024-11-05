@@ -4,7 +4,6 @@ import Image from "next/image";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useState } from "react";
-import { addToCart } from "@/lib/actions";
 export default function Template({
   productInfo,
   addingToCart,
@@ -57,15 +56,19 @@ export default function Template({
         disabled={addingToCart}
         id={`addCartBtn-id-${productInfo.id}`}
         className={`h-14 relative w-full py-4 px-6 text-center rounded-md  font-bold transition-all ${
-          addingToCart
+          addingToCart && thisCardAddinToCart
+            ? "bg-[--button-bg-primary]  cursor-not-allowed"
+            : addingToCart
             ? "bg-gray-400 text-gray-500 opacity-70 cursor-not-allowed"
             : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
         }`}
       >
         {addingToCart && thisCardAddinToCart ? (
-          <SVGComponent />
+          <span className="font-bold text-white opacity-100">
+            Elige el tamaño
+          </span>
         ) : addingToCart ? (
-          <span>Elige el tamaño</span>
+          <SVGComponent />
         ) : (
           <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
             Añadir al carrito

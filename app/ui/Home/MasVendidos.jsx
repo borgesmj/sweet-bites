@@ -6,19 +6,20 @@ import SkeletonCard from "../SkeletonCard";
 export default function MasVendidos() {
   const [topFiveProducts, setTopFiveProducts] = useState([]);
   const [loadingComponent, setLoadingComponent] = useState(true);
+  const [addingToCart, setAddingToCart] = useState(false);
   useEffect(() => {
     async function fetchTopFive() {
-      setLoadingComponent(true)
-        try {
-            const fetchedData = await fetchData();
-            const topFivePRoducts = await fetchedData
-              .sort((a, b) => b.rating.rate - a.rating.rate)
-              .slice(0, 5);
-            setTopFiveProducts(topFivePRoducts);
+      setLoadingComponent(true);
+      try {
+        const fetchedData = await fetchData();
+        const topFivePRoducts = await fetchedData
+          .sort((a, b) => b.rating.rate - a.rating.rate)
+          .slice(0, 5);
+        setTopFiveProducts(topFivePRoducts);
       } catch (error) {
-        console.log(error)
-      } finally{
-        setLoadingComponent(false)
+        console.log(error);
+      } finally {
+        setLoadingComponent(false);
       }
     }
     fetchTopFive();
@@ -30,10 +31,17 @@ export default function MasVendidos() {
       </h2>
       <div className="cards-container max-w-full p-4  overflow-x-auto scroll-snap-x flex flex-row gap-4 lg:gap-8">
         {loadingComponent
-                    ? Array.from({length: 5}).map((_, index) => (<SkeletonCard key={index}/>)) 
-                    : topFiveProducts.map((product) => (
-                        <ProductCard productInfo={product} key={product.id} />
-                    ))}
+          ? Array.from({ length: 5 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))
+          : topFiveProducts.map((product) => (
+              <ProductCard
+                productInfo={product}
+                key={product.id}
+                addingToCart={addingToCart}
+                setAddingToCart={setAddingToCart}
+              />
+            ))}
       </div>
     </div>
   );
