@@ -1,10 +1,12 @@
 "use client";
 import Filters from "@/ui/Tienda/Filters";
 import ProductCard from "@/ui/ProductCard";
+import SizeModal from "@/ui/SizeModal";
 import { fetchData, fetchCategories } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import SkeletonCard from "@/ui/SkeletonCard";
 import { useSearchParams } from "next/navigation";
+import { CartProvider } from "@/lib/AddToCartContext";
 
 export default function Page() {
   const [allProducts, setAllProducts] = useState([]);
@@ -46,25 +48,28 @@ export default function Page() {
   }, [category, allProducts]);
 
   return (
-    <div>
-      <Filters categories={categories} currentCategory={currentCategory} />
-      <div
-        id="products-grid"
-        className="mx-auto grid w-full p-4  grid-cols-1 justify-items-center gap-y-4 md:w-4/5 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-full xl:grid-cols-4 2xl:w-3/4"
-      >
-        {loadingPage
-          ? Array.from({ length: 8 }).map((_, index) => (
-              <SkeletonCard key={index} />
-            ))
-          : filteredProducts.map((product) => (
-              <ProductCard
-                productInfo={product}
-                key={product.id}
-                addingToCart={addingToCart}
-                setAddingToCart={setAddingToCart}
-              />
-            ))}
+    <CartProvider>
+      <div>
+        <Filters categories={categories} currentCategory={currentCategory} />
+        <div
+          id="products-grid"
+          className="mx-auto grid w-full p-4  grid-cols-1 justify-items-center gap-y-4 md:w-4/5 md:grid-cols-2 lg:w-11/12 lg:grid-cols-3 xl:w-full xl:grid-cols-4 2xl:w-3/4"
+        >
+          {loadingPage
+            ? Array.from({ length: 8 }).map((_, index) => (
+                <SkeletonCard key={index} />
+              ))
+            : filteredProducts.map((product) => (
+                <ProductCard
+                  productInfo={product}
+                  key={product.id}
+                  addingToCart={addingToCart}
+                  setAddingToCart={setAddingToCart}
+                />
+              ))}
+        </div>
+        <SizeModal/>
       </div>
-    </div>
+    </CartProvider>
   );
 }

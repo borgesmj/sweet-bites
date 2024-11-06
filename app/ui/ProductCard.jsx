@@ -3,19 +3,25 @@
 import Image from "next/image";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
-import { useState } from "react";
-import { openModal } from "@/lib/actions";
+import { useEffect, useState } from "react";
+import { openModal, closeModal, modalHandler } from "@/lib/actions";
+import { useCart } from "@/lib/AddToCartContext";
 export default function Template({
   productInfo,
-  addingToCart,
-  setAddingToCart,
 }) {
+  const {setAddingToCart, addingToCart} = useCart()
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
   const handleAddToCard = (id) => {
+    setAddingToCart(!addingToCart);
     setThisCardAddingToCart(true);
-    setAddingToCart(true);
-    openModal()
   };
+  
+  useEffect(() => {
+    setThisCardAddingToCart(false);
+    modalHandler(addingToCart)
+    console.log(`this card status ${thisCardAddinToCart}`)
+    console.log(`general ststus ${addingToCart}`)
+  }, [addingToCart])
 
   return (
     <div
@@ -64,12 +70,12 @@ export default function Template({
             : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
         }`}
       >
-        {addingToCart && thisCardAddinToCart ? (
+        {addingToCart && !thisCardAddinToCart ? (
+          <SVGComponent />
+        ) : addingToCart ? (
           <span className="font-bold text-white opacity-100">
             Elige el tamaño
           </span>
-        ) : addingToCart ? (
-          <SVGComponent />
         ) : (
           <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
             Añadir al carrito

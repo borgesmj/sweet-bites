@@ -1,9 +1,11 @@
 "use client";
 import { closeModal } from "@/lib/actions";
+import { useCart } from "@/lib/AddToCartContext";
 
 const SizeModal = () => {
+  const {setAddingToCart, addingToCart} = useCart()
   const handleCloseModal = () => {
-    closeModal();
+    setAddingToCart(!addingToCart)
   };
   return (
     <div

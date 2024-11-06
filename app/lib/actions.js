@@ -27,9 +27,9 @@ export function fetchCategories(products) {
 
 export function openModal() {
   const modal = document.getElementById('size-modal')
-  document.getElementsByTagName('html')[0].classList.add('no-scroll')
   modal.classList.remove('hidden')
   modal.classList.add('flex')
+  modal.classList.remove('scale-out-ver-bottom')
   modal.classList.add('scale-in-ver-bottom')
 }
 
@@ -44,3 +44,10 @@ export function closeModal() {
   }, 500);
 }
 
+export function modalHandler(modalStatus) {
+    if (modalStatus){
+      openModal()
+    } else{
+      closeModal()
+    }
+}

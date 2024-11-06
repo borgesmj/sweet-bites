@@ -4,18 +4,8 @@ const CartContext = createContext();
 export function CartProvider({children}) {
     const [addingToCart, setAddingToCart] = useState(false)
 
-    const handleAddCart = () => {
-        console.log("abrir desdel del context")
-        setAddingToCart(true)
-    }
-
-    const resetValue = () => {
-        setAddingToCart(false)
-        console.log(`reiniciado el valor a ${addingToCart}`)
-    }
-
     return (
-        <CartContext.Provider value={{addingToCart, setAddingToCart, handleAddCart, resetValue}}>
+        <CartContext.Provider value={{addingToCart, setAddingToCart}}>
             {children}
         </CartContext.Provider>
     )
