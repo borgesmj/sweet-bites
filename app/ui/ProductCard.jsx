@@ -19,8 +19,6 @@ export default function Template({
   useEffect(() => {
     setThisCardAddingToCart(false);
     modalHandler(addingToCart)
-    console.log(`this card status ${thisCardAddinToCart}`)
-    console.log(`general ststus ${addingToCart}`)
   }, [addingToCart])
 
   return (
@@ -30,7 +28,7 @@ export default function Template({
     >
       <div className="image-container w-full h-[200px] bg-transparent">
         <Image
-          src={productInfo.image}
+          src={productInfo.images.png}
           width="150"
           height="150"
           alt={productInfo.title}
@@ -55,7 +53,7 @@ export default function Template({
         </span>
         <RiArrowRightWideFill className="transition-all lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
       </a>
-      <p className="text-2xl font-[600] max-w-full">{`$${productInfo.price}`}</p>
+      <p className="text-2xl font-[600] max-w-full">{`$${productInfo.price[0].price}`}</p>
       <button
         onClick={() => {
           handleAddToCard(productInfo.id);

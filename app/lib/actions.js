@@ -1,14 +1,7 @@
 "use client";
-
+import { products } from "./placeholder-data";
 export async function fetchData() {
-  let data = [];
-  try {
-    const result = await fetch("https://fakestoreapi.com/products");
-    data = await result.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  return products;
 }
 
 export const addToCart = async (id) => {
