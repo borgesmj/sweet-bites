@@ -3,6 +3,7 @@ import { closeModal } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
+import SVGComponent from "./Icons/CircleLoaders";
 
 const SizeModal = () => {
   const { selectedProduct, isModalOpen, setIsModalOpen, addNewProduct } =
@@ -10,6 +11,7 @@ const SizeModal = () => {
   const [initialQuantity, setInitialQuantity] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [productName, setProductName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleCloseModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -32,6 +34,7 @@ const SizeModal = () => {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const newProduct = {
         quantity: initialQuantity,
@@ -47,6 +50,7 @@ const SizeModal = () => {
         setInitialQuantity(1);
         setSelectedIndex(0);
         handleCloseModal();
+        setIsLoading(false);
       }, 800);
     }
   };
@@ -117,7 +121,7 @@ const SizeModal = () => {
         type="submit"
         className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px] transition-all active:shadow-none active:translate-y-3"
       >
-        Confirmar
+        {isLoading ? <SVGComponent /> : "Confirmar"}
       </button>
     </form>
   );
