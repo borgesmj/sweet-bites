@@ -6,20 +6,18 @@ import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useEffect, useState } from "react";
 import { openModal, closeModal, modalHandler } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
-export default function Template({
-  productInfo,
-}) {
-  const {setAddingToCart, addingToCart} = useCart()
+export default function Template({ productInfo }) {
+  const { setAddingToCart, addingToCart } = useCart();
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
   const handleAddToCard = (id) => {
     setAddingToCart(!addingToCart);
     setThisCardAddingToCart(true);
   };
-  
+
   useEffect(() => {
     setThisCardAddingToCart(false);
-    modalHandler(addingToCart)
-  }, [addingToCart])
+    modalHandler(addingToCart);
+  }, [addingToCart]);
 
   return (
     <div
@@ -31,16 +29,14 @@ export default function Template({
           src={productInfo.images.png}
           width="150"
           height="150"
-          alt={productInfo.title}
+          alt={productInfo.images.alt}
           className="w-full h-full object-contain"
           priority
         />
       </div>
       <div className="flex flex-col w-full">
-        <h2 className="text-2xl font-[600] max-w-full conta">
-          {productInfo.title.length > 18
-            ? `${productInfo.title.slice(0, 18)}...`
-            : productInfo.title}
+        <h2 className="text-2xl font-[600] max-w-full truncate">
+          {productInfo.title}
         </h2>
       </div>
       <a
@@ -53,7 +49,6 @@ export default function Template({
         </span>
         <RiArrowRightWideFill className="transition-all lg:opacity-100 lg:group-hover:translate-x-6 lg:group-hover:opacity-0" />
       </a>
-      <p className="text-2xl font-[600] max-w-full">{`$${productInfo.price[0].price}`}</p>
       <button
         onClick={() => {
           handleAddToCard(productInfo.id);

@@ -29,10 +29,10 @@ export function openModal() {
 export function closeModal() {
   const modal = document.getElementById('size-modal')
   document.getElementsByTagName('html')[0].classList.remove('no-scroll')
-  modal.classList.remove('flex')
   modal.classList.remove('scale-in-ver-bottom')
   modal.classList.add('scale-out-ver-bottom')
   setTimeout(() => {
+    modal.classList.remove('flex')
     modal.classList.add('hidden')
   }, 500);
 }
