@@ -44,3 +44,9 @@ export function modalHandler(modalStatus) {
       closeModal()
     }
 }
+
+export const fetchProductById = async (id) => {
+  const allProducts = await fetchData()
+  const product = allProducts.find(product => product.id === id)
+  return product
+}

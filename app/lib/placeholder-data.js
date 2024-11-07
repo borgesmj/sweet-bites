@@ -3,9 +3,10 @@ export const products = [
       id: 1,
       title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
       price: [
-        { size: "pequeño", price: 99.95 },
-        { size: "mediano", price: 109.95 },
-        { size: "grande", price: 119.95 }
+        { size: "pequeño", price: 88.56 },
+        { size: "mediano", price: 36.35 },
+        { size: "grande", price: 235.36 },
+        { size: "extra grande", price: 1235.36 },
       ],
       description:
         "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday essentials, and more.",
@@ -24,9 +25,9 @@ export const products = [
       id: 2,
       title: "Men's Casual Premium Slim Fit T-Shirts",
       price: [
-        { size: "pequeño", price: 99.95 },
-        { size: "mediano", price: 109.95 },
-        { size: "grande", price: 119.95 }
+        { size: "pequeño", price: 199.95 },
+        { size: "mediano", price: 209.95 },
+        { size: "grande", price: 1119.95 }
       ],
       description:
         "Slim-fitting style with contrast raglan long sleeves, three-button henley placket, lightweight & soft fabric for breathable and comfortable wear.",

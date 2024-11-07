@@ -4,7 +4,7 @@ import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
 
-const SizeModal = () => {
+const SizeModal = ({selectedProduct}) => {
   const { setAddingToCart, addingToCart } = useCart();
   const [initialQuantity, setInitialQuantity] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -17,11 +17,6 @@ const SizeModal = () => {
     setSelectedIndex(0)
   }, [addingToCart])
 
-  const sizes = [
-    { size: "pequeño", price: 89.95 },
-    { size: "mediano", price: 99.95 },
-    { size: "grande", price: 119.95 },
-  ];
 
   const handleIncrease = (e) => {
     e.preventDefault();
@@ -55,7 +50,7 @@ const SizeModal = () => {
       </div>
       <div className="flex flex-col w-full p-4 rounded-t-lg shadow-lg">
         <h2 className="text-center font-semibold text-2xl text-[--button-bg-secondary] whitespace-normal">
-          Nombre del pradadadsdaoducto
+          {selectedProduct.title}
         </h2>
         <h2 className="text-center font-medium text-lg text-gray-600">
           Elige el tamaño
@@ -64,7 +59,7 @@ const SizeModal = () => {
           id="options-container"
           className="relative w-full px-4 flex flex-row gap-4 overflow-x-auto scroll-snap-x flex-nowrap xl:w-fit xl:mx-auto xl:max-w-2/3"
         >
-          {sizes.map((size, index) => (
+          {selectedProduct?.price?.map((size, index) => (
             <SizeOption
               key={`size-${index}`}
               index={index}

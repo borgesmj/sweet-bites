@@ -4,12 +4,14 @@ import Image from "next/image";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useEffect, useState } from "react";
-import { openModal, closeModal, modalHandler } from "@/lib/actions";
+import { modalHandler, fetchProductById } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
-export default function Template({ productInfo }) {
+export default function Template({ productInfo, setSelectedProduct }) {
   const { setAddingToCart, addingToCart } = useCart();
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
-  const handleAddToCard = (id) => {
+  const handleAddToCard = async (id) => {
+    const product = await fetchProductById(id);
+    setSelectedProduct(product);
     setAddingToCart(!addingToCart);
     setThisCardAddingToCart(true);
   };
