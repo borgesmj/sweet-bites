@@ -14,8 +14,6 @@ export default function Page() {
   const [loadingPage, setLoadingPage] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("");
-  const [addingToCart, setAddingToCart] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState({});
   const searchParams = useSearchParams();
   const category = searchParams.get("categoria");
   useEffect(() => {
@@ -64,11 +62,10 @@ export default function Page() {
                 <ProductCard
                   productInfo={product}
                   key={product.id}
-                  setSelectedProduct={setSelectedProduct}
                 />
               ))}
         </div>
-        <SizeModal selectedProduct = {selectedProduct}/>
+        <SizeModal/>
       </div>
     </CartProvider>
   );

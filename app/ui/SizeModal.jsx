@@ -4,8 +4,8 @@ import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
 
-const SizeModal = ({selectedProduct}) => {
-  const { setAddingToCart, addingToCart } = useCart();
+const SizeModal = () => {
+  const { setAddingToCart, addingToCart, selectedProduct } = useCart();
   const [initialQuantity, setInitialQuantity] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const handleCloseModal = () => {
@@ -50,7 +50,7 @@ const SizeModal = ({selectedProduct}) => {
       </div>
       <div className="flex flex-col w-full p-4 rounded-t-lg shadow-lg">
         <h2 className="text-center font-semibold text-2xl text-[--button-bg-secondary] whitespace-normal">
-          {selectedProduct.title}
+          {selectedProduct?.title}
         </h2>
         <h2 className="text-center font-medium text-lg text-gray-600">
           Elige el tamaño

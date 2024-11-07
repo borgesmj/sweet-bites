@@ -6,14 +6,18 @@ import SVGComponent from "@/ui/Icons/CircleLoaders";
 import { useEffect, useState } from "react";
 import { modalHandler, fetchProductById } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
-export default function Template({ productInfo, setSelectedProduct }) {
-  const { setAddingToCart, addingToCart } = useCart();
+export default function Template({ productInfo }) {
+  const { setAddingToCart, addingToCart, setSelectedProduct } = useCart();
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
   const handleAddToCard = async (id) => {
-    const product = await fetchProductById(id);
-    setSelectedProduct(product);
-    setAddingToCart(!addingToCart);
-    setThisCardAddingToCart(true);
+    try {
+      const product = await fetchProductById(id);
+      setSelectedProduct(product);
+      setAddingToCart(!addingToCart);
+      setThisCardAddingToCart(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
