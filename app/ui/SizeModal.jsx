@@ -115,7 +115,7 @@ const SizeModal = () => {
       </div>
       <button
         type="submit"
-        className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px]"
+        className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px] transition-all active:shadow-none active:translate-y-3"
       >
         Confirmar
       </button>
