@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 import { modalHandler, fetchProductById } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
 export default function Template({ productInfo }) {
-  const { setAddingToCart, addingToCart, setSelectedProduct } = useCart();
+  const { setSelectedProduct, isModalOpen, setIsModalOpen } = useCart();
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
   const handleAddToCard = async (id) => {
     try {
       const product = await fetchProductById(id);
       setSelectedProduct(product);
-      setAddingToCart(!addingToCart);
+      setIsModalOpen(!isModalOpen);
       setThisCardAddingToCart(true);
     } catch (error) {
       console.log(error);
@@ -22,8 +22,8 @@ export default function Template({ productInfo }) {
 
   useEffect(() => {
     setThisCardAddingToCart(false);
-    modalHandler(addingToCart);
-  }, [addingToCart]);
+    modalHandler(isModalOpen);
+  }, [isModalOpen]);
 
   return (
     <div
@@ -59,19 +59,19 @@ export default function Template({ productInfo }) {
         onClick={() => {
           handleAddToCard(productInfo.id);
         }}
-        disabled={addingToCart}
+        disabled={isModalOpen}
         id={`addCartBtn-id-${productInfo.id}`}
         className={`h-14 relative w-full py-4 px-6 text-center rounded-md  font-bold transition-all ${
-          addingToCart && thisCardAddinToCart
+          isModalOpen && thisCardAddinToCart
             ? "bg-[--button-bg-primary]  cursor-not-allowed"
-            : addingToCart
+            : isModalOpen
             ? "bg-gray-400 text-gray-500 opacity-70 cursor-not-allowed"
             : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
         }`}
       >
-        {addingToCart && !thisCardAddinToCart ? (
+        {isModalOpen && !thisCardAddinToCart ? (
           <SVGComponent />
-        ) : addingToCart ? (
+        ) : isModalOpen ? (
           <span className="font-bold text-white opacity-100">
             Elige el tamaño
           </span>

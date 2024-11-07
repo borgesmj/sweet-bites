@@ -5,18 +5,20 @@ import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
 
 const SizeModal = () => {
-  const { setAddingToCart, addingToCart, selectedProduct } = useCart();
+  const { selectedProduct, isModalOpen, setIsModalOpen, addNewProduct } =
+    useCart();
   const [initialQuantity, setInitialQuantity] = useState(1);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [productName, setProductName] = useState("");
   const handleCloseModal = () => {
-    setAddingToCart(!addingToCart);
+    setIsModalOpen(!isModalOpen);
   };
 
   useEffect(() => {
     setInitialQuantity(1);
-    setSelectedIndex(0)
-  }, [addingToCart])
-
+    setSelectedIndex(0);
+    setProductName(selectedProduct?.title);
+  }, [isModalOpen]);
 
   const handleIncrease = (e) => {
     e.preventDefault();
@@ -30,7 +32,23 @@ const SizeModal = () => {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log("add to cart");
+    try {
+      const newProduct = {
+        quantity: initialQuantity,
+        name: productName,
+        size: selectedProduct?.price[selectedIndex].size,
+        detailPrice: selectedProduct?.price[selectedIndex].price,
+      };
+      addNewProduct(newProduct);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setTimeout(() => {
+        setInitialQuantity(1);
+        setSelectedIndex(0);
+        handleCloseModal();
+      }, 800);
+    }
   };
 
   return (
@@ -48,7 +66,7 @@ const SizeModal = () => {
           Cancelar
         </button>
       </div>
-      <div className="flex flex-col w-full p-4 rounded-t-lg shadow-lg">
+      <div className="flex flex-col w-full p-4 rounded-t-lg">
         <h2 className="text-center font-semibold text-2xl text-[--button-bg-secondary] whitespace-normal">
           {selectedProduct?.title}
         </h2>
@@ -82,7 +100,7 @@ const SizeModal = () => {
             -
           </button>
           <input
-            className="w-1/3 text-center bg-transparent outline-none text-xl text-black font-semibold "
+            className="w-1/3 text-center bg-transparent outline-none text-xl text-black font-semibold"
             type="number"
             name=""
             id=""
@@ -97,7 +115,7 @@ const SizeModal = () => {
       </div>
       <button
         type="submit"
-        className="w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px]"
+        className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px]"
       >
         Confirmar
       </button>
