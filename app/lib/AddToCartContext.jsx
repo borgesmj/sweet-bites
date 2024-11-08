@@ -54,6 +54,7 @@ export function CartProvider({ children }) {
         setSelectedProduct,
         addNewProduct,
         cartList,
+        setCartList
       }}
     >
       {children}
