@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { IoTrash } from "react-icons/io5";
 const ShoppingCartItem = ({product}) => {
-  console.log(product)
   return (
     <div className="relative grid grid-cols-4 w-[120%] lg:w-full px-2 border-b border-gray-200 my-3 py-2">
       <IoTrash className="absolute top-0 right-4 text-red-600 cursor-pointer" />

@@ -44,7 +44,7 @@ const ShoppingCartList = () => {
       <div className="flex-grow overflow-y-auto bg-white px-4 py-2 max-h-72 min-h-40">
         { shoppingList.length > 0 ? 
           shoppingList.map((product) => {
-            return <ShoppingCartItem key={product.id} product={product} />
+            return <ShoppingCartItem key={product.key} product={product} />
           }) : (<div>no hay items</div>)
         }
 

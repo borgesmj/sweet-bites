@@ -22,11 +22,27 @@ export function CartProvider({ children }) {
     if (cartList.length > 0) {
       localStorage.setItem("cartList", JSON.stringify(cartList));
     }
-    cartLength(cartList.length)
+    cartLength(cartList.length);
   }, [cartList]);
 
+  const generarID = () => {
+        const numero = Math.random().toString(36).substring(2)
+        const fecha = Date.now().toString(36).substring(2)
+
+        return numero + fecha
+    }
+
+
   const addNewProduct = (newProduct) => {
-    setCartList([...cartList, newProduct]);
+    const existingProduct = cartList.findIndex((product) => 
+      product.id === newProduct.id && product.size === newProduct.size
+    );
+    if(existingProduct === -1){
+      newProduct.key = generarID()
+      setCartList([...cartList, newProduct]);
+    } else{
+      cartList[existingProduct].quantity += newProduct.quantity
+    }
   };
 
   return (
