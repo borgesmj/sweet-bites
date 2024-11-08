@@ -75,5 +75,22 @@ export const cartLength = (productsLength) => {
     document.getElementById("shopping-bag-number").classList.add("opacity-0");
     document.getElementById("shopping-bag-number").innerText = "";
   }
-  console.log(productsLength);
+};
+
+export const openShoppingCartList = () => {
+  const shoppingCartListSection = document.getElementById("shopping-cart-list");
+  shoppingCartListSection.classList.remove("hidden");
+  shoppingCartListSection.classList.remove("scale-out-hor-right");
+  shoppingCartListSection.classList.add("scale-in-hor-right");
+  shoppingCartListSection.classList.add("flex");
+};
+
+export const closeShoppingCartList = () => {
+  const shoppingCartListSection = document.getElementById("shopping-cart-list");
+  shoppingCartListSection.classList.remove("scale-in-hor-right");
+  shoppingCartListSection.classList.add("scale-out-hor-right");
+  setTimeout(() => {
+    shoppingCartListSection.classList.remove("flex");
+    shoppingCartListSection.classList.add("hidden");
+  }, 500);
 };

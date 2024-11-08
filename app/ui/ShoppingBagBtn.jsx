@@ -1,9 +1,14 @@
 "use client";
 import { LuShoppingBag } from "react-icons/lu";
+import { openShoppingCartList } from "@/lib/actions";
 export default function ShoppingBagBtn() {
+  const handleClick = () => {
+    openShoppingCartList()
+  }
   return (
     <div
       className={`relative h-[50px] w-[50px] flex flex-col justify-center items-center   cursor-pointer transition-fast hover:text-[--button-bg-primary]`}
+      onClick={handleClick}
     >
       <LuShoppingBag size="30" />
       <span
