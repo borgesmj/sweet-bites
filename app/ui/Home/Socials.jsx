@@ -17,7 +17,7 @@ export default function Socials() {
                     </h2>
                     <p className={`${caveat.className} text-[30px] w-full text-center  md:mx-auto  leading-8`}>La mejor manera de soñar con nuestros productos mientras almuerza.</p>
                 </div>
-                <div className="links w-4/5 flex flex-row justify-between md:justify-around md:m-auto b  md:w-1/2 lg:w-[200px] lg:flex-col">
+                <div className="links w-full flex flex-row justify-between md:justify-around md:m-auto b  md:w-1/2 lg:w-[200px] lg:flex-col">
                     <a target="_blank" href="" className="flex flex-col gap-2 justify-center items-center  p-4 group">
                         <span className="bg-white flex justify-center items-center w-[50px] h-[50px] rounded-full text-[--accent-100]">
                             <FaFacebookF size="2em" />
