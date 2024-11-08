@@ -5,6 +5,7 @@ import Info from "./ui/Home/Info";
 import Socials from "./ui/Home/Socials";
 import { CartProvider } from "./lib/AddToCartContext";
 import SizeModal from "./ui/SizeModal";
+import ShoppingCartList from "./ui/ShoppingCartList";
 export default function Home() {
   return (
     <CartProvider>
@@ -14,6 +15,7 @@ export default function Home() {
         <Info />
         <Socials />
         <SizeModal />
+        <ShoppingCartList/>
       </div>
     </CartProvider>
   );
