@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { cartLength } from "./actions";
+import { setCartLengthUi } from "@/lib/uiHandlers";
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
@@ -22,7 +22,7 @@ export function CartProvider({ children }) {
     if (cartList.length > 0) {
       localStorage.setItem("cartList", JSON.stringify(cartList));
     }
-    cartLength(cartList.length);
+    setCartLengthUi(cartList.length);
   }, [cartList]);
 
   const generarID = () => {

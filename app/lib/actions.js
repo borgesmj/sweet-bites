@@ -51,31 +51,6 @@ export const fetchProductById = async (id) => {
   return product;
 };
 
-export const cartLength = (productsLength) => {
-  if (productsLength > 0) {
-    document
-      .getElementById("shopping-bag-number")
-      .classList.remove("opacity-0");
-    document.getElementById("shopping-bag-number").classList.add("opacity-100");
-    document.getElementById(
-      "shopping-bag-number"
-    ).innerText = `${productsLength}`;
-    document
-      .getElementById("shopping-bag-number")
-      .classList.add("scale-up-center");
-    setTimeout(() => {
-      document
-        .getElementById("shopping-bag-number")
-        .classList.remove("scale-up-center");
-    }, 500);
-  } else {
-    document
-      .getElementById("shopping-bag-number")
-      .classList.remove("opacity-100");
-    document.getElementById("shopping-bag-number").classList.add("opacity-0");
-    document.getElementById("shopping-bag-number").innerText = "";
-  }
-};
 
 export const openShoppingCartList = () => {
   const shoppingCartListSection = document.getElementById("shopping-cart-list");
