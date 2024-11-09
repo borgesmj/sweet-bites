@@ -1,10 +1,16 @@
 "use client";
-import { closeModal } from "@/lib/actions";
+import { closeModal } from "@/lib/uiHandlers";
 import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
 import SVGComponent from "./Icons/CircleLoaders";
-
+/**
+ * * Componente de ventana donde el usuario: 
+ * * Selecciona el tamaño del producto seleccionado
+ * * Selecciona la cantidad de unidades del producto seleccionado
+ * * Envia al nuevo producto al carrito de compras
+ * @returns UI del componente
+ */
 const SizeModal = () => {
   const { selectedProduct, isModalOpen, setIsModalOpen, addNewProduct } =
     useCart();
@@ -12,8 +18,9 @@ const SizeModal = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [productName, setProductName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const handleCloseModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const handleCloseModal = async () => {
+    await closeModal()
+    await setIsModalOpen(false);
   };
 
   useEffect(() => {

@@ -1,29 +1,45 @@
 "use client";
-
+// *Componentes
 import Image from "next/image";
-import { RiArrowRightWideFill } from "react-icons/ri";
 import SVGComponent from "@/ui/Icons/CircleLoaders";
+// * Iconos
+import { RiArrowRightWideFill } from "react-icons/ri";
+// * Hooks
 import { useEffect, useState } from "react";
-import { modalHandler, fetchProductById } from "@/lib/actions";
 import { useCart } from "@/lib/AddToCartContext";
+// * handlers
+import { openModal } from "@/lib/uiHandlers";
+// * Data Fetch
+import DataService from "@/lib/FirebaseService";
+/**
+ * * Componente de la tarjeta de producto
+ * * Se renderiza en la pagina de inicio (/) y en la pagina de la tienda (/tienda)
+ * @param productInfo 
+ * * traido desde un array.map en ambas páginas 
+ * @returns 
+ * * UI de la tarjeta y llama a la funcion que abre la ventana para que el usuario elija el tamaño del productto
+ */
 export default function Template({ productInfo }) {
   const { setSelectedProduct, isModalOpen, setIsModalOpen } = useCart();
   const [thisCardAddinToCart, setThisCardAddingToCart] = useState(false);
-  const handleAddToCard = async (id) => {
-    try {
-      const product = await fetchProductById(id);
-      setSelectedProduct(product);
-      setIsModalOpen(!isModalOpen);
-      setThisCardAddingToCart(true);
-    } catch (error) {
-      console.log(error);
-    }
+
+  const showProductInfo = async (id) => {
+    const product = await DataService.fetchProductById(id);
+    setSelectedProduct(product);
   };
 
   useEffect(() => {
-    setThisCardAddingToCart(false);
-    modalHandler(isModalOpen);
+    if (!isModalOpen) {
+      setThisCardAddingToCart(false);
+    }
   }, [isModalOpen]);
+
+  const handleOpenModal = async (id) => {
+    await setIsModalOpen(true);
+    await setThisCardAddingToCart(true);
+    await showProductInfo(id);
+    await openModal();
+  };
 
   return (
     <div
@@ -57,7 +73,7 @@ export default function Template({ productInfo }) {
       </a>
       <button
         onClick={() => {
-          handleAddToCard(productInfo.id);
+          handleOpenModal(productInfo.id);
         }}
         disabled={isModalOpen}
         id={`addCartBtn-id-${productInfo.id}`}

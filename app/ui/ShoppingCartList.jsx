@@ -1,9 +1,19 @@
+// * Iconos
 import { IoClose } from "react-icons/io5";
 import { RiShoppingBag2Line } from "react-icons/ri";
+// * Componentes
 import ShoppingCartItem from "./ShoppingCartItem";
-import { closeShoppingCartList } from "@/lib/actions";
+// * Manejo de UI
+import { closeShoppingCartList } from "@/lib/uiHandlers";
+// * Hooks
 import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
+/**
+ * * Componente de la ventana de carrito de compras
+ * * Utiliza la lista de productos traida desde el hook useCart()
+ * Utiliza la @function handleDeleteAllItems para borrar todos los Items de la lista
+ * @returns UI del componente
+ */
 const ShoppingCartList = () => {
   const [shoppingList, setShoppingList] = useState([]);
   const { cartList, setCartList } = useCart();
@@ -70,7 +80,9 @@ const ShoppingCartList = () => {
         ) : (
           <div className="min-h-40 flex flex-col justify-center items-center">
             <RiShoppingBag2Line size="120" />
-            <p className="text-center">Aún no tienes productos en tu carrito de compras</p>
+            <p className="text-center">
+              Aún no tienes productos en tu carrito de compras
+            </p>
           </div>
         )}
       </div>
