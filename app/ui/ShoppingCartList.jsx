@@ -56,7 +56,7 @@ const ShoppingCartList = () => {
         <p className=" text-center">Sub-total</p>
       </div>
       {/** Lista de productos */}
-      <div className="flex-grow overflow-y-auto bg-white px-4 py-2 max-h-72 min-h-40">
+      <div className="flex-grow overflow-y-auto bg-[--bg-100] px-4 py-2 max-h-72 min-h-40">
         {shoppingList.length > 0 ? (
           shoppingList.map((product, index) => {
             return (
