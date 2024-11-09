@@ -1,8 +1,8 @@
 "use client";
+import DataService from "@/lib/FirebaseService";
 import Filters from "@/ui/Tienda/Filters";
 import ProductCard from "@/ui/ProductCard";
 import SizeModal from "@/ui/SizeModal";
-import { fetchData, fetchCategories } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import SkeletonCard from "@/ui/SkeletonCard";
 import { useSearchParams } from "next/navigation";
@@ -20,16 +20,12 @@ export default function Page() {
   useEffect(() => {
     async function loadProducts() {
       setLoadingPage(true);
-      try {
-        const products = await fetchData();
-        const categories = await fetchCategories(products);
-        setCategories(categories);
-        setAllProducts(products);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoadingPage(false);
-      }
+      const products = await DataService.fetchData();
+      const categories = await DataService.fetchCategories()
+      await setCategories(categories);
+      await setAllProducts(products);
+      await setLoadingPage(false);
+      
     }
     loadProducts();
   }, []);

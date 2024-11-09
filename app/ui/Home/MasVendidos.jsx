@@ -1,8 +1,8 @@
 "use client";
 import ProductCard from "@/ui/ProductCard";
-import { fetchData } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import SkeletonCard from "../SkeletonCard";
+import DataService from "@/lib/FirebaseService";
 export default function MasVendidos() {
   const [topFiveProducts, setTopFiveProducts] = useState([]);
   const [loadingComponent, setLoadingComponent] = useState(true);
@@ -10,17 +10,9 @@ export default function MasVendidos() {
   useEffect(() => {
     async function fetchTopFive() {
       setLoadingComponent(true);
-      try {
-        const fetchedData = await fetchData();
-        const topFivePRoducts = await fetchedData
-          .sort((a, b) => b.rating.rate - a.rating.rate)
-          .slice(0, 5);
-        setTopFiveProducts(topFivePRoducts);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoadingComponent(false);
-      }
+      const fetchFiveProducts = await DataService.orderFirstFive();
+      await setTopFiveProducts(fetchFiveProducts);
+      await setLoadingComponent(false);
     }
     fetchTopFive();
   }, []);
