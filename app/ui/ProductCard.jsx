@@ -9,14 +9,15 @@ import { useEffect, useState } from "react";
 import { useCart } from "@/lib/AddToCartContext";
 // * handlers
 import { openModal } from "@/lib/uiHandlers";
+import { encodeUrl } from "@/lib/encodeUrl";
 // * Data Fetch
 import DataService from "@/lib/FirebaseService";
 /**
  * * Componente de la tarjeta de producto
  * * Se renderiza en la pagina de inicio (/) y en la pagina de la tienda (/tienda)
- * @param productInfo 
- * * traido desde un array.map en ambas páginas 
- * @returns 
+ * @param productInfo
+ * * traido desde un array.map en ambas páginas
+ * @returns
  * * UI de la tarjeta y llama a la funcion que abre la ventana para que el usuario elija el tamaño del productto
  */
 export default function Template({ productInfo }) {
@@ -40,6 +41,8 @@ export default function Template({ productInfo }) {
     await showProductInfo(id);
     await openModal();
   };
+  
+  console.log();
 
   return (
     <div
@@ -62,7 +65,7 @@ export default function Template({ productInfo }) {
         </h2>
       </div>
       <a
-        href={`tienda/producto/${productInfo.id}`}
+        href={`tienda/producto/${encodeUrl(productInfo.title)}`}
         className="w-full flex flex-row gap-2 items-center justify-start text-[--text-100] font-[500] group"
       >
         <RiArrowRightWideFill className="hidden lg:block transition-all lg:opacity-0 lg:group-hover:translate-x-6 lg:group-hover:opacity-100" />
