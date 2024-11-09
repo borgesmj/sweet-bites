@@ -14,3 +14,11 @@ export const setCartLengthUi = (productsLength) => {
     cartButton.innerText = "";
   }
 };
+
+export const openShoppingCartList = () => {
+  const shoppingCartListSection = document.getElementById("shopping-cart-list");
+  shoppingCartListSection.classList.remove("hidden");
+  shoppingCartListSection.classList.remove("scale-out-hor-right");
+  shoppingCartListSection.classList.add("scale-in-hor-right");
+  shoppingCartListSection.classList.add("flex");
+}

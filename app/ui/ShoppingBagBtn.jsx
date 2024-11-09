@@ -1,6 +1,6 @@
 "use client";
 import { LuShoppingBag } from "react-icons/lu";
-import { openShoppingCartList } from "@/lib/actions";
+import { openShoppingCartList } from "@/lib/uiHandlers";
 export default function ShoppingBagBtn() {
   const handleClick = () => {
     openShoppingCartList()
