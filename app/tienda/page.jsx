@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import SkeletonCard from "@/ui/SkeletonCard";
 import { useSearchParams } from "next/navigation";
 import { CartProvider } from "@/lib/AddToCartContext";
+import ShoppingCartList from "@/ui/ShoppingCartList";
 
 export default function Page() {
   const [allProducts, setAllProducts] = useState([]);
@@ -66,6 +67,7 @@ export default function Page() {
               ))}
         </div>
         <SizeModal/>
+        <ShoppingCartList/>
       </div>
     </CartProvider>
   );

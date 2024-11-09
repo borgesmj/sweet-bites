@@ -60,7 +60,7 @@ const ShoppingCartItem = ({ product, index }) => {
         </button>
         <input
           type="number"
-          value={productQuantity}
+          value={product.quantity}
           className="w-8 h-8 text-center bg-transparent outline-none"
           readOnly
         />
@@ -73,7 +73,7 @@ const ShoppingCartItem = ({ product, index }) => {
         </button>
       </div>
       <p className="col-span-1 font-semibold flex justify-center items-center">
-        {`$${(product.detailPrice * productQuantity).toFixed(2)}`}
+        {`$${(product.detailPrice * product.quantity).toFixed(2)}`}
       </p>
     </div>
   );
