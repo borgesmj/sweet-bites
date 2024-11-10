@@ -2,7 +2,7 @@ export const encodeUrl = (producName) => {
   producName = producName
     .trim()
     .toLowerCase()
-    .replace(/[/*+.:_,;'¿?¡!@]/g, "")
+    .replace(/[/*+.:_,;'¿?¡!&@$%#]/g, "")
     .replace("á", "a")
     .replace("é", "e")
     .replace("í", "i")

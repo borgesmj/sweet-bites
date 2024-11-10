@@ -11,15 +11,9 @@ export default function page() {
   return (
     <div>
       <CartProvider>
-        <button
-          type="button"
-          onClick={openModal}
-        >
-          abrir
-        </button>
         <ProductPageContent productName={productName} />
         <SizeModal />
-        <ShoppingCartList/>
+        <ShoppingCartList />
       </CartProvider>
     </div>
   );
