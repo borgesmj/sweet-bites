@@ -79,7 +79,9 @@
           "italic": false
         }
       ],
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "IDX.aI.enableInlineCompletion": true,
+      "IDX.aI.enableCodebaseIndexing": true
       
       
 }

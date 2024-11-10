@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoTrash } from "react-icons/io5";
 import { useCart } from "@/lib/AddToCartContext";
-const ShoppingCartItem = ({ product, index }) => {
+const ShoppingCartItem = ({ product, index, className }) => {
   const { cartList, setCartList } = useCart();
   const [productQuantity, setProductQuantity] = useState(0);
   useEffect(() => {
@@ -29,7 +29,7 @@ const ShoppingCartItem = ({ product, index }) => {
   };
 
   return (
-    <div className="relative grid grid-cols-4 w-[120%] lg:w-full px-2 border-b border-gray-200 my-3 py-2">
+    <div className={className}>
       <IoTrash
         className="absolute top-0 right-4 text-red-600 cursor-pointer"
         onClick={() => {

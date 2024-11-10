@@ -74,6 +74,7 @@ const ShoppingCartList = () => {
                 key={product.key}
                 product={product}
                 index={index}
+                className="relative grid grid-cols-4 w-[150%] lg:w-full px-2 border-b border-gray-200 my-3 py-2"
               />
             );
           })

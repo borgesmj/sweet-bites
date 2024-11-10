@@ -45,7 +45,7 @@ const SizeModal = () => {
     try {
       const newProduct = {
         quantity: initialQuantity,
-        name: productName,
+        name: selectedProduct?.title,
         size: selectedProduct?.price[selectedIndex].size,
         detailPrice: selectedProduct?.price[selectedIndex].price,
         id: selectedProduct?.id,
