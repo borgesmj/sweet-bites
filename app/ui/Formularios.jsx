@@ -7,32 +7,59 @@ import { useEffect, useState } from "react";
 const Formularios = () => {
   const { cartList } = useCart();
   const [homeDelivery, setHomeDelivery] = useState(false);
+  const [username, setUsername] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [message, setMessage] = useState("");
+  const [address, setAddress] = useState("");
+  const [discountPercent, setDiscauntPeeercent] = useState(0);
   const subTotal = cartList.reduce((acc, product) => {
     return acc + product.detailPrice * product.quantity;
   }, 0);
 
-  if (cartList.length < 1){
-    return (
-      <h1>no tienes productos</h1>
-    )
+  if (cartList.length < 1) {
+    return <h1>no tienes productos</h1>;
   }
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('enviar peido')
-  }
+    e.preventDefault();
+    const newOrder = {
+      name: username,
+      phonenumber: phonenumber,
+      message: message,
+      products: cartList,
+      deliveryDetaeils: {
+        homeDelivery: homeDelivery,
+        address: address,
+      },
+    };
+    console.log(newOrder);
+  };
   return (
-    <form className="w-full flex flex-col items-center justify-normal gap-4 lg:flex-row lg:justify-start  lg:items-start" onSubmit={handleSubmit}>
+    <form
+      className="w-full flex flex-col items-center justify-normal gap-4 lg:flex-row lg:justify-between  lg:items-start xl:w-3/4 xl:mx-auto"
+      onSubmit={handleSubmit}
+    >
       <div className="w-full p-4 md:w-3/4 lg:w-3/5 xl:w-1/2 gap-4 flex  flex-col items-center">
         <CouponForm />
-        <h2 className="w-full text-left">Lista de productos:</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">Lista de productos:</h2>
         <ProductList cartList={cartList} />
-        <h2 className="w-full text-left">Detalles de la entrega:</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">Detalles de la entrega:</h2>
         <DeliverOptions
           homeDelivery={homeDelivery}
           setHomeDelivery={setHomeDelivery}
+          setUsername={setUsername}
+          username={username}
+          phonenumber={phonenumber}
+          setPhonenumber={setPhonenumber}
+          message={message}
+          setMessage={setMessage}
+          setAddress={setAddress}
+          address={address}
         />
       </div>
-      <TotalAmmount subTotal={subTotal} />
+      <TotalAmmount
+        subTotal={subTotal}
+        discountPercent={discountPercent}
+      />
     </form>
   );
 };

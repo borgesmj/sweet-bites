@@ -1,8 +1,21 @@
 import { IoCartOutline } from "react-icons/io5";
 import { MdDeliveryDining } from "react-icons/md";
-import DeliveryForm from "./DeliveryForm";
 import FormField from "../FormField";
-const DeliverOptions = ({ homeDelivery, setHomeDelivery }) => {
+import { useState } from "react";
+import { calculateDistance } from "@/lib/CalculateDeliveryFee";
+const DeliverOptions = ({
+  homeDelivery,
+  setHomeDelivery,
+  username,
+  setUsername,
+  phonenumber,
+  setPhonenumber,
+  message,
+  setMessage,
+  setAddress,
+  address,
+  setDeliveryFee
+}) => {
   return (
     <div id="user-data" className="flex flex-col w-full gap-4">
       {/** Datos principales*/}
@@ -12,18 +25,22 @@ const DeliverOptions = ({ homeDelivery, setHomeDelivery }) => {
           id="username"
           type="text"
           onChange={(e) => {
-            console.log(e.target.value);
+            setUsername(e.target.value);
           }}
           required={true}
+          tabIndex="2"
+          value={username}
         />
         <FormField
           label="Teléfono"
           id="phonenumber"
           type="text"
           onChange={(e) => {
-            console.log(e.target.value);
+            setPhonenumber(e.target.value);
           }}
           required={true}
+          tabIndex="3"
+          value={phonenumber}
         />
         {/* * * Aqui va el calendario * * */}
       </div>
@@ -54,6 +71,7 @@ const DeliverOptions = ({ homeDelivery, setHomeDelivery }) => {
             onChange={() => {
               setHomeDelivery(true);
             }}
+            tabIndex="4"
           />
           <label
             htmlFor="deliver-home"
@@ -72,10 +90,15 @@ const DeliverOptions = ({ homeDelivery, setHomeDelivery }) => {
             type="text"
             required={homeDelivery}
             onChange={(e) => {
-              console.log(e.target.value);
+              setAddress(e.target.value);
             }}
+            value={address}
+            tabIndex="5"
           />
-          <span className="text-xs text-[red] w-full text-center">El servicio a domicilio podria tener un costo adicional.</span>
+          <span className="text-xs text-[red] w-full text-center">
+            El servicio a domicilio podria tener un costo adicional.
+          </span>
+          
         </>
       ) : null}
       <div className="campo w-full flex flex-col md:flex-row md:justify-start">
@@ -87,8 +110,9 @@ const DeliverOptions = ({ homeDelivery, setHomeDelivery }) => {
           id="comentarios"
           className="w-full text-left outline-none border-b border-[--text-100] bg-transparent focus:bg-[--bg-200] p-2 md:w-1/2"
           onChange={(e) => {
-            console.log(e.target.value);
+            setMessage(e.target.value);
           }}
+          value={message}
         />
       </div>
     </div>
