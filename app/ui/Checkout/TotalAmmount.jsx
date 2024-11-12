@@ -35,9 +35,9 @@ const TotalAmmount = ({ subTotal, discountPercent }) => {
       </div>
 
       {/* Total */}
-      <div className="flex justify-between mt-4 pt-4 border-t border-gray-300">
+      <div className="flex justify-between mt-4 pt-4 border-t border-gray-300 w-full">
         <span className="text-xl font-bold text-gray-800">Total a pagar:</span>
-        <span className="text-xl font-bold text-gray-900">${total}</span>
+        <span className="text-xl font-bold text-gray-900">${total.toFixed(2)}</span>
       </div>
 
       {/**Boton enviar peido */}

@@ -20,7 +20,7 @@ const Formularios = () => {
   if (cartList.length < 1) {
     return (
       <div className="w-full h-dvh flex justify-center items-center gap-2">
-        <span>Disculpa, no tienes productos en tu carrito. Ve a la{" "}</span>
+        <span>Disculpa, no tienes productos en tu carrito. Ve a la </span>
         <Link
           className="font-semibold text-blue-700 underline"
           href={`/tienda`}
@@ -51,7 +51,7 @@ const Formularios = () => {
       onSubmit={handleSubmit}
     >
       <div className="w-full p-4 md:w-3/4 lg:w-3/5 xl:w-1/2 gap-4 flex  flex-col items-center">
-        <CouponForm />
+        <CouponForm setDiscauntPeeercent={setDiscauntPeeercent} subTotal={subTotal}/>
         <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">
           Lista de productos:
         </h2>
