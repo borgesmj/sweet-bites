@@ -5,7 +5,7 @@ const SVGComponent = (props) => (
     width={60}
     height={30}
     viewBox="0 0 120 30"
-    fill="#fff"
+    fill="currentColor"
     {...props}
   >
     <circle cx={15} cy={15} r={15}>
