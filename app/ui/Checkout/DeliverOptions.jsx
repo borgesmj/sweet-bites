@@ -1,6 +1,7 @@
 import { IoCartOutline } from "react-icons/io5";
 import { MdDeliveryDining } from "react-icons/md";
 import FormField from "../FormField";
+import FormCalendar from "../Form.calendar";
 import { useState } from "react";
 import { calculateDistance } from "@/lib/CalculateDeliveryFee";
 const DeliverOptions = ({
@@ -14,7 +15,8 @@ const DeliverOptions = ({
   setMessage,
   setAddress,
   address,
-  setDeliveryFee
+  setDeliveryFee,
+  setDeliveryDate
 }) => {
   return (
     <div id="user-data" className="flex flex-col w-full gap-4">
@@ -43,6 +45,7 @@ const DeliverOptions = ({
           value={phonenumber}
         />
         {/* * * Aqui va el calendario * * */}
+        <FormCalendar setDeliveryDate={setDeliveryDate}/>
       </div>
       <div id="options" className="w-full flex flex-row justify-around">
         <div className="w-1/2 flex flex-col items-center gap-3">

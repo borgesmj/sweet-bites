@@ -13,6 +13,7 @@ const Formularios = () => {
   const [message, setMessage] = useState("");
   const [address, setAddress] = useState("");
   const [discountPercent, setDiscauntPeeercent] = useState(0);
+  const [deliveryDate, setDeliveryDate] = useState("")
   const subTotal = cartList.reduce((acc, product) => {
     return acc + product.detailPrice * product.quantity;
   }, 0);
@@ -38,9 +39,10 @@ const Formularios = () => {
       phonenumber: phonenumber,
       message: message,
       products: cartList,
-      deliveryDetaeils: {
+      deliveryDetails: {
         homeDelivery: homeDelivery,
         address: address,
+        deliveryDate: deliveryDate
       },
     };
     console.log(newOrder);
@@ -70,6 +72,7 @@ const Formularios = () => {
           setMessage={setMessage}
           setAddress={setAddress}
           address={address}
+          setDeliveryDate={setDeliveryDate}
         />
       </div>
       <TotalAmmount subTotal={subTotal} discountPercent={discountPercent} />
