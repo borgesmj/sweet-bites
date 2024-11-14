@@ -5,7 +5,7 @@ const TotalAmmount = ({ subTotal, discountPercent }) => {
   const total = subTotal - discount;
 
   return (
-    <div className="p-4 w-full md:w-1/2 lg:sticky lg:top-16 right-0 lg:w-1/3 rounded-md shadow-lg lg:h-[50dvh] flex flex-col justify-around items-center gap-4">
+    <div className="p-4 w-full md:w-fit lg:sticky lg:top-16 right-0 lg:w-1/3 rounded-md shadow-lg lg:h-fit flex flex-col justify-around items-center gap-4">
       <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">
         Resumen del Pedido
       </h2>
