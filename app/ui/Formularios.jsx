@@ -55,8 +55,7 @@ const Formularios = () => {
       address: address,
       deliveryDate: formatDate(deliveryDate),
     };
-    console.log(newOrder);
-    console.log(stringify(newOrder));
+    window.location.href = `/neworder?${stringify(newOrder)}`;
   };
   return (
     <form

@@ -24,7 +24,6 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal }) => {
     const LScoupon = localStorage.getItem("coupon");
     if (LScoupon) {
       const coupon = JSON.parse(LScoupon);
-      console.log(coupon);
       setUserCoupon(coupon.id);
       applyCoupon(coupon);
     }

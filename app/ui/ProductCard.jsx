@@ -42,7 +42,6 @@ export default function Template({ productInfo }) {
     await openModal();
   };
   
-  console.log();
 
   return (
     <div
