@@ -1,4 +1,4 @@
-import { products } from "./placeholder-data";
+import { products, coupons } from "./placeholder-data";
 class DataService {
   async fetchData() {
     /**
@@ -46,6 +46,10 @@ class DataService {
       console.log("Error extrayendo los primeros 5 productos: ",error);
     }
     return topFiveProducts
+  }
+
+  async fetchCoupons() {
+    return coupons;
   }
 }
 

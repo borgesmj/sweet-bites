@@ -41,34 +41,8 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
       applyCoupon(coupon);
     }
   }, []);
-  const coupons = [
-    {
-      id: "COUPON1",
-      type: "discount", // ! Descuento
-      value: 10, // ! 10% de descuento
-      conditions: {
-        // ! condiciones
-        min_purchase: 50, // Monto mínimo para que se aplique
-        valid_products: ["product1", "product2"], // Productos que aplican
-      },
-      start_date: "2024-11-01",
-      end_date: "2024-11-30",
-      is_valid: true, // Esto se evaluará según las condiciones
-    },
-    {
-      id: "COUPON2",
-      type: "free_product", // Producto gratis
-      product_id: 11, // Producto gratis
-      conditions: {
-        min_purchase: 100, // Monto mínimo para que se aplique
-      },
-      start_date: "2024-11-01",
-      end_date: "2024-12-11",
-      is_valid: true,
-    },
-  ];
 
-  const validateCoupon = (e) => {
+  const validateCoupon = async (e) => {
     e.preventDefault();
     setErrorMessage("");
     /**
@@ -81,6 +55,7 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
     /**
      * @satisfies verifica que el cupon si existe dentro del arreglo de cupones
      */
+    const coupons = await DataService.fetchCoupons();
     const couponExists = coupons.find((coupon) => {
       return coupon.id.toUpperCase() === userCoupon;
     });
