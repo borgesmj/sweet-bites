@@ -1,8 +1,8 @@
 "use client";
 import { openModal } from "@/lib/uiHandlers";
-import SizeModal from "@/ui/SizeModal";
-import ShoppingCartList from "@/ui/ShoppingCartList";
-import ProductPageContent from "@/ui/ProductPageContent";
+import SizeModal from "@/ui/Layout/SizeModal";
+import ShoppingCartList from "@/ui/Cart/ShoppingCartList";
+import ProductPageContent from "@/ui/ProductPage/ProductPageContent";
 import { CartProvider } from "@/lib/AddToCartContext";
 import { useParams } from "next/navigation";
 export default function page() {

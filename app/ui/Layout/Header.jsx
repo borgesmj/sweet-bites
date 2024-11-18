@@ -1,8 +1,8 @@
 "use client";
-import BurgerMenu from "./BurgerMenu";
+import BurgerMenu from "@/ui/Buttons/BurgerMenu";
 import Image from "next/image";
 import Navlinks from "./Navlinks";
-import ShoppingBagBtn from "@/ui/ShoppingBagBtn";
+import ShoppingBagBtn from "@/ui/Buttons/ShoppingBagBtn";
 import { useState } from "react";
 import { CartProvider } from "@/lib/AddToCartContext";
 export default function Header() {

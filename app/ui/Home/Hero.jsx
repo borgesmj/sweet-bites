@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link"
 import { RiArrowRightWideFill } from "react-icons/ri";
-import { caveat } from "../fonts";
+import { caveat } from "../Fonts/fonts";
 export default function Hero() {
     const cookiesImages = [
         {

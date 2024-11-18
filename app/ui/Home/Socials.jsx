@@ -1,4 +1,4 @@
-import { caveat } from "../fonts";
+import { caveat } from "../Fonts/fonts";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import Image from "next/image";

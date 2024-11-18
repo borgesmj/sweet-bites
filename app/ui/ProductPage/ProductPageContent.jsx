@@ -79,7 +79,7 @@ const ProductPageContent = ({ productName }) => {
           </div>
         </>
       ) : (
-        <p>loading</p>
+        <p>Cargando información del producto</p>
       )}
     </div>
   );

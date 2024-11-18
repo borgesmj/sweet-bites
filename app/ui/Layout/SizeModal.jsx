@@ -3,7 +3,7 @@ import { closeModal } from "@/lib/uiHandlers";
 import { useCart } from "@/lib/AddToCartContext";
 import { useEffect, useState } from "react";
 import SizeOption from "./SizeOption";
-import SVGComponent from "./Icons/CircleLoaders";
+import SVGComponent from "../Icons/CircleLoaders";
 /**
  * * Componente de ventana donde el usuario: 
  * * Selecciona el tamaño del producto seleccionado

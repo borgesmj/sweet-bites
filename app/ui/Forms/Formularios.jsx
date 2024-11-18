@@ -1,8 +1,8 @@
 import { useCart } from "@/lib/AddToCartContext";
-import CouponForm from "./Checkout/CouponForm";
-import ProductList from "./Checkout/ProductList";
-import DeliverOptions from "./Checkout/DeliverOptions";
-import TotalAmmount from "./Checkout/TotalAmmount";
+import CouponForm from "../Checkout/CouponForm";
+import ProductList from "../Checkout/ProductList";
+import DeliverOptions from "../Checkout/DeliverOptions";
+import TotalAmmount from "../Checkout/TotalAmmount";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { stringify } from "querystring";

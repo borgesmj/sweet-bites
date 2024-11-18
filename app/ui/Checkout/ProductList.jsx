@@ -1,4 +1,4 @@
-import ShoppingCartItem from "../ShoppingCartItem";
+import ShoppingCartItem from "../Cart/ShoppingCartItem";
 
 const ProductList = ({ cartList }) => {
   return (

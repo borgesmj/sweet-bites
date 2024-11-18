@@ -1,13 +1,13 @@
 "use client";
 import DataService from "@/lib/FirebaseService";
 import Filters from "@/ui/Tienda/Filters";
-import ProductCard from "@/ui/ProductCard";
-import SizeModal from "@/ui/SizeModal";
+import ProductCard from "@/ui/Card/ProductCard";
+import SizeModal from "@/ui/Layout/SizeModal";
 import { useEffect, useState } from "react";
-import SkeletonCard from "@/ui/SkeletonCard";
+import SkeletonCard from "@/ui/Card/SkeletonCard";
 import { useSearchParams } from "next/navigation";
 import { CartProvider } from "@/lib/AddToCartContext";
-import ShoppingCartList from "@/ui/ShoppingCartList";
+import ShoppingCartList from "@/ui/Cart/ShoppingCartList";
 
 export default function Page() {
   const [allProducts, setAllProducts] = useState([]);

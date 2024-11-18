@@ -1,7 +1,7 @@
 "use client";
-import ProductCard from "@/ui/ProductCard";
+import ProductCard from "@/ui/Card/ProductCard";
 import { useEffect, useState } from "react";
-import SkeletonCard from "../SkeletonCard";
+import SkeletonCard from "../Card/SkeletonCard";
 import DataService from "@/lib/FirebaseService";
 export default function MasVendidos() {
   const [topFiveProducts, setTopFiveProducts] = useState([]);
