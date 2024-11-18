@@ -5,6 +5,7 @@ import DeliverOptions from "./Checkout/DeliverOptions";
 import TotalAmmount from "./Checkout/TotalAmmount";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { stringify } from "querystring";
 const Formularios = () => {
   const { cartList } = useCart();
   const [homeDelivery, setHomeDelivery] = useState(false);
@@ -33,21 +34,29 @@ const Formularios = () => {
       </div>
     );
   }
+  const formatDate = (deliveryDate) => {
+    const pickedDate = new Date(deliveryDate);
+    const day = pickedDate.getDate();
+    const month = pickedDate.getMonth();
+    const year = pickedDate.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const newOrder = {
       name: username,
       phonenumber: phonenumber,
       message: message,
-      products: cartList,
       paymentMethod: paymentMethod,
-      deliveryDetails: {
-        homeDelivery: homeDelivery,
-        address: address,
-        deliveryDate: deliveryDate,
-      },
+      subtotal: subTotal,
+      discountPercent: discountPercent,
+      total: subTotal - subTotal * (discountPercent / 100),
+      homeDelivery: homeDelivery,
+      address: address,
+      deliveryDate: formatDate(deliveryDate),
     };
     console.log(newOrder);
+    console.log(stringify(newOrder));
   };
   return (
     <form
