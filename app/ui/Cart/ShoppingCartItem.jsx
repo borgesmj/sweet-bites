@@ -66,8 +66,11 @@ const ShoppingCartItem = ({ product, index, className }) => {
         />
         <button
           type="button"
-          className="border p-2 rounded"
+          className={`border p-2 rounded ${
+            product.special_product  ? "opacity-0" : "opacity-100"
+          }`}
           onClick={handleIncreaseItem}
+          disabled={product.special_product}
         >
           +
         </button>

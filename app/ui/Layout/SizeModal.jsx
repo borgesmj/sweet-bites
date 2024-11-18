@@ -49,7 +49,8 @@ const SizeModal = () => {
         size: selectedProduct?.price[selectedIndex].size,
         detailPrice: selectedProduct?.price[selectedIndex].price,
         id: selectedProduct?.id,
-        image: selectedProduct?.images.png
+        image: selectedProduct?.images.png,
+        special_product: selectedProduct?.special_product
       };
       addNewProduct(newProduct);
     } catch (error) {

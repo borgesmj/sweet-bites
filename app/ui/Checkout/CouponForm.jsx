@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
+import DataService from "@/lib/FirebaseService"
 
-const CouponForm = ({ setDiscauntPeeercent, subTotal }) => {
+const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
   const [userCoupon, setUserCoupon] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const applyCoupon = (coupon) => {
+  const applyCoupon = async (coupon) => {
     switch (coupon.type) {
       case "discount":
         if (subTotal > coupon.conditions.min_purchase) {
-          localStorage.setItem("coupon", JSON.stringify(coupon));
-          setDiscauntPeeercent(coupon.value / 100);
-          setErrorMessage("Cupón aplicado con exito");
+          await localStorage.setItem("coupon", JSON.stringify(coupon));
+          await setDiscauntPeeercent(coupon.value / 100);
+          await setErrorMessage("Cupón aplicado con exito");
         }
         break;
       case "free_product":
-        console.log("cupon de producto gratis");
+        const product = await DataService.fetchProductById(coupon.product_id);
+        const newProduct = {
+          quantity: 1,
+          name: product?.title,
+          size: product?.price[0].size,
+          detailPrice: product?.price[0].price,
+          id: product?.id,
+          image: product?.images.png,
+          special_product: product.special_product
+        };
+        addNewProduct(newProduct)
+        await localStorage.setItem("coupon", JSON.stringify(coupon));
+        await setErrorMessage("Cupón aplicado con exito");
         break;
       default:
         setErrorMessage("El cupón no es válido");
@@ -45,7 +58,7 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal }) => {
     {
       id: "COUPON2",
       type: "free_product", // Producto gratis
-      value: "product3", // Producto gratis
+      product_id: 11, // Producto gratis
       conditions: {
         min_purchase: 100, // Monto mínimo para que se aplique
       },
@@ -110,8 +123,9 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal }) => {
         />
         <button
           type="button"
-          className="p-2 rounded-full w-32 bg-[--button-bg-secondary] text-[--bg-100]"
+          className={`p-2 rounded-full w-32 bg-[--button-bg-secondary] text-[--bg-100] ${!!localStorage.getItem("coupon") ? "cursor-not-allowed" : "cursor-pointer"}`}
           onClick={validateCoupon}
+          disabled={!!localStorage.getItem("coupon")}
         >
           Aplicar
         </button>

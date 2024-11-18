@@ -19,7 +19,8 @@ export const products = [
       rating: {
         rate: 3.9,
         count: 120
-      }
+      }, 
+      special_product: false
     },
     {
       id: 2,
@@ -40,7 +41,8 @@ export const products = [
       rating: {
         rate: 4.1,
         count: 259
-      }
+      },
+      special_product: false
     },
     {
       id: 3,
@@ -61,7 +63,8 @@ export const products = [
       rating: {
         rate: 4.7,
         count: 500
-      }
+      },
+      special_product: false
     },
     {
       id: 4,
@@ -82,7 +85,8 @@ export const products = [
       rating: {
         rate: 2.1,
         count: 430
-      }
+      },
+      special_product: false
     },
     {
       id: 5,
@@ -103,7 +107,8 @@ export const products = [
       rating: {
         rate: 4.6,
         count: 400
-      }
+      },
+      special_product: false
     },
     {
       id: 6,
@@ -124,7 +129,8 @@ export const products = [
       rating: {
         rate: 3.9,
         count: 70
-      }
+      },
+      special_product: false
     },
     {
       id: 7,
@@ -145,7 +151,8 @@ export const products = [
       rating: {
         rate: 3.0,
         count: 400
-      }
+      },
+      special_product: false
     },
     {
       id: 8,
@@ -166,7 +173,8 @@ export const products = [
       rating: {
         rate: 1.9,
         count: 100
-      }
+      },
+      special_product: false
     },
     {
       id: 9,
@@ -187,7 +195,8 @@ export const products = [
       rating: {
         rate: 3.3,
         count: 203
-      }
+      },
+      special_product: false
     },
     {
       id: 10,
@@ -208,7 +217,28 @@ export const products = [
       rating: {
         rate: 2.9,
         count: 470
-      }
+      },
+      special_product: false
+    },
+    {
+      id: 11,
+      title: "Galleta de chocolate",
+      price: [
+        { size: "unico", price: 0 },
+      ],
+      description:
+        "Galleta de chocolate de cortesia",
+      category: "electronics",
+      images: {
+        webp: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+        png: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+        alt: "SanDisk SSD Plus 1TB"
+      },
+      rating: {
+        rate: 2.9,
+        count: 470
+      },
+      special_product: true
     }
   ];
   

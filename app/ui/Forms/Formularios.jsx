@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { stringify } from "querystring";
 const Formularios = () => {
-  const { cartList } = useCart();
+  const { cartList, addNewProduct } = useCart();
   const [homeDelivery, setHomeDelivery] = useState(false);
   const [username, setUsername] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
@@ -66,6 +66,7 @@ const Formularios = () => {
         <CouponForm
           setDiscauntPeeercent={setDiscauntPeeercent}
           subTotal={subTotal}
+          addNewProduct={addNewProduct}
         />
         <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">
           Lista de productos:

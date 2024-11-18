@@ -20,7 +20,7 @@ export default function Page() {
   useEffect(() => {
     async function loadProducts() {
       setLoadingPage(true);
-      const products = await DataService.fetchData();
+      const products = await DataService.fetchData();     
       const categories = await DataService.fetchCategories()
       await setCategories(categories);
       await setAllProducts(products);
@@ -31,15 +31,18 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
+    const gridProducts = allProducts.filter((product) => {
+      return product.special_product === false
+    })
     if (category) {
       setCurrentCategory(category);
-      const filtered = allProducts.filter((product) => {
+      const filtered = gridProducts.filter((product) => {
         return product.category === category;
       });
       setFilteredProducts(filtered);
     } else {
       setCurrentCategory("");
-      setFilteredProducts(allProducts);
+      setFilteredProducts(gridProducts);
     }
   }, [category, allProducts]);
 
