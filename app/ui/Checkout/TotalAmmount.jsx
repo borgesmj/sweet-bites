@@ -1,6 +1,6 @@
 import React from "react";
 
-const TotalAmmount = ({ subTotal, discountPercent }) => {
+const TotalAmmount = ({ subTotal, discountPercent, setPaymentMethod }) => {
   const discount = subTotal * discountPercent;
   const total = subTotal - discount;
 
@@ -23,21 +23,27 @@ const TotalAmmount = ({ subTotal, discountPercent }) => {
         </div>
 
         {/* Método de pago */}
-        <div className="flex justify-between mb-4">
-          <span className="text-gray-700">Medio de pago</span>
-          <span className="text-gray-900">
-            <select name="" id="" className="bg-transparent text-gray-700">
-              <option value="">Transferencia</option>
-              <option value="">Efectivo</option>
-            </select>
-          </span>
+        <div className="flex flex-col justify-between mb-4">
+          <span className="text-gray-700 text-center">Medio de pago</span>
+          <p className="text-gray-900 flex justify-between">
+            <span className="w-1/2 flex justify-between flex-col items-center">
+              <input type="radio" name="payment-method" id="transferencia" defaultChecked onChange={()=>{setPaymentMethod("transferencia")}}/>
+              <label htmlFor="transferencia">Transferencia</label>
+            </span>
+            <span className="w-1/2 flex justify-between flex-col items-center">
+              <input type="radio" name="payment-method" id="efectivo" onChange={()=>{setPaymentMethod("efectivo")}} />
+              <label htmlFor="efectivo">Efectivo</label>
+            </span>
+          </p>
         </div>
       </div>
 
       {/* Total */}
       <div className="flex justify-between mt-4 pt-4 border-t border-gray-300 w-full">
         <span className="text-xl font-bold text-gray-800">Total a pagar:</span>
-        <span className="text-xl font-bold text-gray-900">${total.toFixed(2)}</span>
+        <span className="text-xl font-bold text-gray-900">
+          ${total.toFixed(2)}
+        </span>
       </div>
 
       {/**Boton enviar peido */}

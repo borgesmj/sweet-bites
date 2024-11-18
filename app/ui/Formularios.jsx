@@ -13,7 +13,8 @@ const Formularios = () => {
   const [message, setMessage] = useState("");
   const [address, setAddress] = useState("");
   const [discountPercent, setDiscauntPeeercent] = useState(0);
-  const [deliveryDate, setDeliveryDate] = useState("")
+  const [deliveryDate, setDeliveryDate] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("transferencia");
   const subTotal = cartList.reduce((acc, product) => {
     return acc + product.detailPrice * product.quantity;
   }, 0);
@@ -39,10 +40,11 @@ const Formularios = () => {
       phonenumber: phonenumber,
       message: message,
       products: cartList,
+      paymentMethod: paymentMethod,
       deliveryDetails: {
         homeDelivery: homeDelivery,
         address: address,
-        deliveryDate: deliveryDate
+        deliveryDate: deliveryDate,
       },
     };
     console.log(newOrder);
@@ -53,7 +55,10 @@ const Formularios = () => {
       onSubmit={handleSubmit}
     >
       <div className="w-full p-4 md:w-3/4 lg:w-3/5 xl:w-1/2 gap-4 flex  flex-col items-center">
-        <CouponForm setDiscauntPeeercent={setDiscauntPeeercent} subTotal={subTotal}/>
+        <CouponForm
+          setDiscauntPeeercent={setDiscauntPeeercent}
+          subTotal={subTotal}
+        />
         <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">
           Lista de productos:
         </h2>
@@ -75,7 +80,11 @@ const Formularios = () => {
           setDeliveryDate={setDeliveryDate}
         />
       </div>
-      <TotalAmmount subTotal={subTotal} discountPercent={discountPercent} />
+      <TotalAmmount
+        subTotal={subTotal}
+        discountPercent={discountPercent}
+        setPaymentMethod={setPaymentMethod}
+      />
     </form>
   );
 };
