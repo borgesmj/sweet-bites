@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const CouponForm = ({setDiscauntPeeercent,subTotal}) => {
+const CouponForm = ({ setDiscauntPeeercent, subTotal }) => {
   const [userCoupon, setUserCoupon] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const applyCoupon = (coupon) => {
+    switch (coupon.type) {
+      case "discount":
+        if (subTotal > coupon.conditions.min_purchase) {
+          localStorage.setItem("coupon", JSON.stringify(coupon));
+          setDiscauntPeeercent(coupon.value / 100);
+          setErrorMessage("Cupón aplicado con exito");
+        }
+        break;
+      case "free_product":
+        console.log("cupon de producto gratis");
+        break;
+      default:
+        setErrorMessage("El cupón no es válido");
+        break;
+    }
+  };
+  useEffect(() => {
+    const LScoupon = localStorage.getItem("coupon");
+    if (LScoupon) {
+      const coupon = JSON.parse(LScoupon);
+      console.log(coupon);
+      setUserCoupon(coupon.id);
+      applyCoupon(coupon);
+    }
+  }, []);
   const coupons = [
     {
       id: "COUPON1",
-      type: "discount", // Descuento
-      value: 10, // 10% de descuento
+      type: "discount", // ! Descuento
+      value: 10, // ! 10% de descuento
       conditions: {
+        // ! condiciones
         min_purchase: 50, // Monto mínimo para que se aplique
         valid_products: ["product1", "product2"], // Productos que aplican
       },
@@ -56,22 +83,11 @@ const CouponForm = ({setDiscauntPeeercent,subTotal}) => {
       if (currentDate < startDate || currentDate > endDate) {
         setErrorMessage("El cupón ha expirado");
         return;
+      } else if (localStorage.getItem("coupon")) {
+        setErrorMessage("Ya tienes un cupón aplicado");
+        return;
       } else {
-        // * verificar el tipo de cupon
-        switch (couponExists.type) {
-          case "discount":
-            if(subTotal > couponExists.conditions.min_purchase){
-              setDiscauntPeeercent(couponExists.value/100)
-              setErrorMessage("Cupón aplicado con exito")
-            }
-            break;
-          case "free_product":
-            console.log('cupon de producto gratis')
-            break;
-          default:
-            setErrorMessage("El cupón no es válido");
-            break;
-        }
+        applyCoupon(couponExists);
       }
     }
   };
@@ -91,6 +107,7 @@ const CouponForm = ({setDiscauntPeeercent,subTotal}) => {
             setUserCoupon(e.target.value.toUpperCase());
           }}
           value={userCoupon}
+          disabled={!!localStorage.getItem("coupon")}
         />
         <button
           type="button"
