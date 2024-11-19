@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-
+import DataServise from "@/lib/FirebaseService";
 export default function Page() {
 const params = useSearchParams();
   const sendOrder = async () => {
@@ -12,18 +12,21 @@ const params = useSearchParams();
     const products = localStorage.getItem("cartList");
     newOrder.products = JSON.parse(products);
     // * aqui va la logica para enviar a firebase
-    console.log(newOrder)
+    const orderID = await DataServise.generateNewOrder(newOrder)
     await localStorage.removeItem("cartList");
     await localStorage.removeItem("coupon")
     await localStorage.clear()
-    window.location.href = "/"
+    let messageText = ""
+    messageText += `Hola, he realizado un nuevo pedido. Con el ID: ${orderID}`
+    const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
+    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${messageText}`
   };
   useEffect(() => {
     sendOrder();
   }, []);
   return (
     <div className="w-full h-dvh flex justify-center items-center">
-      Enviando tu pedido, por favor no recargues la página
+      Enviando tu pedido, por favor no recargues la página.
     </div>
   );
 }
