@@ -256,7 +256,7 @@ export const coupons = [
   {
     id: "COUPON2",
     type: "free_product", // Producto gratis
-    product_id: "Wgc8kTSdi79pYojBSqJb", // id Producto gratis
+    product_id: "25YfDi2eRi2otOEdhLXd", // id Producto gratis
     conditions: {
       min_purchase: 100, // Monto mínimo para que se aplique
     },
