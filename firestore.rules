@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Permitir lectura pública a todos los documentos de la colección "products"
+    match /products/{productId} {
+      allow read: if true;  // Cualquier usuario puede leer productos.
+    }
+    
+    // Permitir escritura en la colección "orders" solo cuando se crea un nuevo pedido.
+    match /orders/{orderId} {
+      allow create: if true;  // Permitir que cualquiera pueda crear un nuevo pedido.
+      allow read: if true;    // Permitir que cualquiera lea órdenes (si quieres que también se pueda leer).
+      allow update, delete: if false;  // No permitir actualizaciones ni eliminaciones.
+    }
+
+    // Otras colecciones y documentos están protegidos por defecto.
+    match /{document=**} {
+      allow read, write: if false;  // Por defecto, denegar acceso a cualquier otro documento.
+    }
+  }
+}
