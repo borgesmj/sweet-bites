@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "@/lib/AddToCartContext";
 import { encodeUrl } from "@/lib/encodeUrl";
 import DataService from "@/lib/FirebaseService";
@@ -6,50 +6,53 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 import { openModal } from "@/lib/uiHandlers";
+import PageLoader from "../Loaders/PageLoader";
 const ProductPageContent = ({ productName }) => {
   const { setSelectedProduct, selectedProduct } = useCart();
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     const fetchProduct = async () => {
       const products = await DataService.fetchData();
-      const product = await products.find((product) => {
+      const product = await products.filter((product) => {
         return encodeUrl(product.title) === productName;
-      });
-      setSelectedProduct(product);
+      })[0];
+      await setSelectedProduct(product);
+      await setIsLoading(false)
     };
     fetchProduct();
   }, []);
 
+  if (isLoading){
+    return (
+      <PageLoader/>
+    )
+  } 
+console.log(selectedProduct)
   return (
     <div className="flex flex-col-reverse items-center justify-normal gap-4 w-full p-4 my-4 h-fit lg:flex-row  lg:w-2/3 lg:mx-auto">
-      {selectedProduct?.images?.webp ? (
+      {selectedProduct? (
         <>
-          {selectedProduct?.images?.webp ? (
-            <>
               <Image
-                src={selectedProduct.images.webp}
+                src={selectedProduct?.images?.webp}
                 width="250"
                 height="200"
                 alt={selectedProduct.images.alt || "Product Image"}
                 className="h-auto block md:hidden"
               />
               <Image
-                src={selectedProduct.images.webp}
+                src={selectedProduct?.images?.webp}
                 width="350"
                 height="200"
                 alt={selectedProduct.images.alt || "Product Image"}
                 className="h-auto hidden md:block lg:hidden"
               />
               <Image
-                src={selectedProduct.images.webp}
+                src={selectedProduct?.images?.webp}
                 width="400"
                 height="400"
                 alt={selectedProduct.images.alt || "Product Image"}
                 className="h-auto hidden lg:block"
               />
-            </>
-          ) : (
-            <p>Loading image...</p>
-          )}
           <div className="info w-full flex flex-col items-center lg:w-1/2">
             {/** Breadcrumbs */}
             <div className="w-full flex flex-col items-center">
@@ -79,7 +82,7 @@ const ProductPageContent = ({ productName }) => {
           </div>
         </>
       ) : (
-        <p>Cargando información del producto</p>
+        <p>CEste producto no fue</p>
       )}
     </div>
   );
