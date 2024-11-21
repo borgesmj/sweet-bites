@@ -2,8 +2,6 @@ import { IoCartOutline } from "react-icons/io5";
 import { MdDeliveryDining } from "react-icons/md";
 import FormField from "@/ui/Forms/FormField";
 import FormCalendar from "@/ui/Forms/Form.calendar";
-import { useState } from "react";
-import { calculateDistance } from "@/lib/CalculateDeliveryFee";
 const DeliverOptions = ({
   homeDelivery,
   setHomeDelivery,
@@ -111,11 +109,13 @@ const DeliverOptions = ({
         <textarea
           name=""
           id="comentarios"
-          className="w-full text-left outline-none border-b border-[--text-100] bg-transparent focus:bg-[--bg-200] p-2 md:w-1/2"
+          className="w-full text-left outline-none border-b border-[--text-100] bg-transparent focus:bg-[--bg-200] p-2 md:w-1/2 resize-none"
           onChange={(e) => {
             setMessage(e.target.value);
           }}
           value={message}
+          cols={20}
+          rows={2}
         />
       </div>
     </div>

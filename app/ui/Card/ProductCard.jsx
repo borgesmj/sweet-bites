@@ -46,7 +46,7 @@ export default function Template({ productInfo }) {
   return (
     <div
       id={`product-cart-id-${productInfo.id}`}
-      className="whitespace-nowrap w-[300px] p-4 bg-[--bg-200] flex flex-col gap-4 justify-center items-start"
+      className="whitespace-nowrap w-[300px] p-4 bg-[--bg-100] flex flex-col gap-4 justify-center items-start"
     >
       <div className="image-container w-full h-[200px] bg-transparent">
         <Image
