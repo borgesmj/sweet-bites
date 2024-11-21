@@ -18,8 +18,8 @@ const infoList = [
 export default function Info() {
     return (
         <div className="w-full flex flex-col items-center p-4 md:flex-row-reverse md:justify-around gap-4">
-            <Image src="/tray-w-coockies.png" width="300" height="300" alt="tray with cookies" className="block xl:hidden" />
-            <Image src="/tray-w-coockies.png" width="400" height="400" alt="tray with cookies" className="hidden xl:block" />
+            <Image src="/tray-w-bread.webp" width="300" height="300" alt="tray with cookies" className="block xl:hidden" />
+            <Image src="/tray-w-bread.webp" width="400" height="400" alt="tray with cookies" className="hidden xl:block" />
             <div id="info-list" className="flex flex-col w-full md:w-1/2">
                 {
                     infoList.map((info, index) => (

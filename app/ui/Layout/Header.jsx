@@ -19,18 +19,18 @@ export default function Header() {
       <BurgerMenu animateLink={animateLink} />
       <a href="/">
         <Image
-          src="/Logo-mobile.png"
+          src="/logo-header-mobile.png"
           width={100}
           height={50}
           alt="Logo"
-          className="block lg:hidden"
+          className="block lg:hidden w-auto"
         />
         <Image
-          src="/Logo-desktop.png"
+          src="/logo-herder-desktop.png"
           width={200}
-          height={50}
+          height={70}
           alt="Logo"
-          className="hidden lg:block"
+          className="hidden lg:block lg:w-auto"
         />
       </a>
       <Navlinks animatedLink={animatedLink} />

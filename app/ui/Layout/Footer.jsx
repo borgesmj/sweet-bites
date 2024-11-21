@@ -24,7 +24,7 @@ export default function Footer() {
     return (
         <footer className="flex flex-col px-4 py-8 w-full lg:mt-12 2xl:w-1/2 2xl:mx-auto">
             <div className="fast-links-container flex flex-col items-center gap-8 w-full  md:flex-row md:gap-0 md:justify-around">
-                <Image src="/Logo-mobile.png" width="200" height="200" alt="Sweet bites logo" />
+                <Image src="/Logo-mobile.png" width="200" height="200" alt="Sweet bites logo" className="w-auto" />
                 <div className="links flex flex-wrap justify-center items gap-2  w-2/3  md:w-1/2 md:gap-0 lg:gap-2">
                     {
                         navlinks.map((link, index) => (
