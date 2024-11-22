@@ -50,6 +50,14 @@ body {
   overflow: hidden;
 }
 
-.scroll-snap-x  {
+.scroll-snap-x {
   scroll-snap-type: x mandatory;
+}
+
+.hero-section-background {
+  background-image: radial-gradient(var(--primary-300) 1px, transparent 1px),
+    radial-gradient(var(--primary-300) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  background-color: var(--bg-100);
 }
