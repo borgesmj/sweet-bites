@@ -7,20 +7,21 @@ import { openShoppingCartList } from "@/lib/uiHandlers";
  * @link uiHandlers
  * @returns UI del boton
  */
-export default function ShoppingBagBtn() {
+export default function ShoppingBagBtn({pathName}) {
   const handleClick = () => {
     openShoppingCartList();
   };
   return (
-    <div
-      className={`relative h-[50px] w-[50px] flex flex-col justify-center items-center   cursor-pointer transition-fast hover:text-[--button-bg-primary]`}
+    <button
+      className={`relative h-[50px] w-[50px] flex flex-col justify-center items-center   cursor-pointer transition-fast hover:text-[--button-bg-primary] ${["/nosotros", "/galeria", "/contacto"].includes(pathName) ? "opacity-0 cursor-auto" : ""}`}
       onClick={handleClick}
+      disabled={["/nosotros", "/galeria", "/contacto"].includes(pathName)}
     >
       <LuShoppingBag size="30" />
       <span
         id="shopping-bag-number"
         className=" bg-red-500 absolute top-0 right-0 w-6 h-6 rounded-full text-white text-center font-bold text-md opacity-0"
       ></span>
-    </div>
+    </button>
   );
 }

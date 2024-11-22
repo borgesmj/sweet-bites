@@ -5,8 +5,10 @@ import Navlinks from "./Navlinks";
 import ShoppingBagBtn from "@/ui/Buttons/ShoppingBagBtn";
 import { useState } from "react";
 import { CartProvider } from "@/lib/AddToCartContext";
+import { usePathname } from "next/navigation";
 export default function Header() {
   const [animatedLink, setAnimatedLink] = useState(false);
+  const pathName = usePathname();
   const animateLink = () => {
     setAnimatedLink(true);
     setTimeout(() => {
@@ -33,9 +35,9 @@ export default function Header() {
           className="hidden lg:block lg:w-auto"
         />
       </a>
-      <Navlinks animatedLink={animatedLink} />
+      <Navlinks animatedLink={animatedLink} pathName={pathName} />
       <CartProvider>
-        <ShoppingBagBtn />
+        <ShoppingBagBtn pathName={pathName}/>
       </CartProvider>
     </header>
   );
