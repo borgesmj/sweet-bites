@@ -14,6 +14,7 @@ export default function Hero() {
                 <span className="transition-fast lg:group-hover:translate-x-6">Comprar</span>
                 <RiArrowRightWideFill className="transition-fast lg:opacity-100 lg:group-hover:translate-x-6 h-full text-[--bg-100] lg:group-hover:opacity-0" />
             </Link>
+            <Image src="/cooki_vector.png" alt="cookie vector sweet bites" width={250} height={250} className="w-auto"/>
         </section>
     );
 }
