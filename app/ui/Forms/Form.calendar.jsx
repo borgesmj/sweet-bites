@@ -22,6 +22,7 @@ const FormCalendar = ({setDeliveryDate}) => {
         required
         selected={selectedDate}
         minDate={startDate()}
+        autoComplete="off"
         onChange={(date) => {
             setDeliveryDate(date);
             setSelectedDate(date)
