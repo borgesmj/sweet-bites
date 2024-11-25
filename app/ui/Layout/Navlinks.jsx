@@ -13,10 +13,13 @@ export default function Navlinks({animatedLink, pathName}) {
             href: "/contacto",
             text: "Contacto"
         },
+        /**
+         * 
         {
             href: "/galeria",
             text: "Galería"
         },
+        */
     ]
     return (
         <nav className="navbar fixed bg-[--accent-100] top-[var(--header-height)] h-dvh w-full flex flex-col justify-center items-center gap-4 transition-fast md:static md:flex-row md:h-[var(--mobile-header-height)] md:bg-transparent md:w-[--navbar-width-md] lg:w-[--navbar-width-lg]">
