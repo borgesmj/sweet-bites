@@ -46,8 +46,8 @@ const SizeModal = () => {
       const newProduct = {
         quantity: initialQuantity,
         name: selectedProduct?.title,
-        size: selectedProduct?.price[selectedIndex].size,
-        detailPrice: selectedProduct?.price[selectedIndex].price,
+        size: selectedProduct?.productPrices[selectedIndex].size,
+        detailPrice: selectedProduct?.productPrices[selectedIndex].price,
         id: selectedProduct?.id,
         image: selectedProduct?.images.png,
         special_product: selectedProduct?.special_product
@@ -91,7 +91,7 @@ const SizeModal = () => {
           id="options-container"
           className="relative w-full px-4 flex flex-row gap-4 overflow-x-auto scroll-snap-x flex-nowrap xl:w-fit xl:mx-auto xl:max-w-2/3"
         >
-          {selectedProduct?.price?.map((size, index) => (
+          {selectedProduct?.productPrices?.map((size, index) => (
             <SizeOption
               key={`size-${index}`}
               index={index}
@@ -129,9 +129,9 @@ const SizeModal = () => {
       </div>
       <button
         type="submit"
-        className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[200px] transition-all active:shadow-none active:translate-y-3"
+        className="shadow-2xl shadow-black w-full  bg-[--button-bg-primary] text-white font-bold text-2xl p-4 rounded-2xl md:w-[300px] transition-all active:shadow-none active:translate-y-3"
       >
-        {isLoading ? <SVGComponent /> : "Confirmar"}
+        {isLoading ? <SVGComponent /> : "Agregar al carrito"}
       </button>
     </form>
   );

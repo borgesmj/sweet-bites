@@ -94,6 +94,11 @@ class DataService {
   }
 
   async fetchCoupons() {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const productsCollection = collection(db, "coupons");
+    const productsSnapShot = await getDocs(productsCollection);
+    const coupons = productsSnapShot.docs.map((doc) => doc.data());
     return coupons;
   }
 

@@ -95,7 +95,7 @@ export default function Template({ productInfo }) {
           </span>
         ) : (
           <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
-            Añadir al carrito
+            Ver Precios
           </span>
         )}
       </button>

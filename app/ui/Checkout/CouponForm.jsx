@@ -1,30 +1,44 @@
 import React, { useEffect, useState } from "react";
-import DataService from "@/lib/FirebaseService"
+import DataService from "@/lib/FirebaseService";
 
-const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
+const CouponForm = ({
+  setDiscauntPeeercent,
+  subTotal,
+  addNewProduct,
+  cartList,
+}) => {
   const [userCoupon, setUserCoupon] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const applyCoupon = async (coupon) => {
+    const couponConditions = coupon.conditions;
+    if (subTotal < couponConditions.min_purchase) {
+      setErrorMessage("Tu compra no cumple con la compra mínima");
+      return;
+    }
+    const product = await DataService.fetchProductById(coupon.product_id);
+    const newProduct = {
+      quantity: 1,
+      name: product?.title,
+      size: product?.productPrices[0].size,
+      detailPrice: product?.productPrices[0].price,
+      id: product?.id,
+      image: product?.images.png,
+      special_product: product.special_product,
+    };
     switch (coupon.type) {
       case "discount":
-        if (subTotal > coupon.conditions.min_purchase) {
-          await localStorage.setItem("coupon", JSON.stringify(coupon));
-          await setDiscauntPeeercent(coupon.value / 100);
-          await setErrorMessage("Cupón aplicado con exito");
-        }
+        setDiscauntPeeercent(coupon.discount_value / 100);
+        await localStorage.setItem("coupon", JSON.stringify(coupon));
+        await setErrorMessage("Cupón aplicado con exito");
         break;
-      case "free_product":
-        const product = await DataService.fetchProductById(coupon.product_id);
-        const newProduct = {
-          quantity: 1,
-          name: product?.title,
-          size: product?.price[0].size,
-          detailPrice: product?.price[0].price,
-          id: product?.id,
-          image: product?.images.png,
-          special_product: product.special_product
-        };
-        addNewProduct(newProduct)
+      case "free-product":
+        addNewProduct(newProduct);
+        await localStorage.setItem("coupon", JSON.stringify(coupon));
+        await setErrorMessage("Cupón aplicado con exito");
+        break;
+      case "discount_free-product":
+        setDiscauntPeeercent(coupon.discount_value / 100);
+        addNewProduct(newProduct);
         await localStorage.setItem("coupon", JSON.stringify(coupon));
         await setErrorMessage("Cupón aplicado con exito");
         break;
@@ -37,7 +51,7 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
     const LScoupon = localStorage.getItem("coupon");
     if (LScoupon) {
       const coupon = JSON.parse(LScoupon);
-      setUserCoupon(coupon.id);
+      setUserCoupon(coupon.code);
       applyCoupon(coupon);
     }
   }, []);
@@ -45,37 +59,38 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
   const validateCoupon = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    /**
-     * @returns erroe si el cliente envia un mensaje vacio
-     */
+    //* Verificar que el cliente no haya introducido un valor vacío
     if (userCoupon === "") {
-      setErrorMessage("Debes ingresar un cupón válido");
+      setErrorMessage("Por favor, ingresa un cupón válido");
       return;
     }
-    /**
-     * @satisfies verifica que el cupon si existe dentro del arreglo de cupones
-     */
-    const coupons = await DataService.fetchCoupons();
-    const couponExists = coupons.find((coupon) => {
-      return coupon.id.toUpperCase() === userCoupon;
+    //* Obtener la lista de cupones
+    const couponList = await DataService.fetchCoupons();
+    // * Filtrar por el cupón que introdujo el usuario
+    const filteredCoupon = await couponList.find((coupon) => {
+      return userCoupon === coupon.code;
     });
-    if (!couponExists) {
-      setErrorMessage("El cupón no está disponible");
-      return;
+
+    //* Verificar que el cupón sea válido
+    if (!filteredCoupon) {
+      setErrorMessage("El cupón introducido no es correcto");
     } else {
-      // * verificar la fecha
-      const currentDate = new Date();
-      const startDate = new Date(couponExists.start_date);
-      const endDate = new Date(couponExists.end_date);
-      if (currentDate < startDate || currentDate > endDate) {
-        setErrorMessage("El cupón ha expirado");
+      if (!filteredCoupon.is_valid) {
+        setErrorMessage("Este cupón no es válido. Intenta con otro");
         return;
-      } else if (localStorage.getItem("coupon")) {
-        setErrorMessage("Ya tienes un cupón aplicado");
-        return;
-      } else {
-        applyCoupon(couponExists);
       }
+
+      // * Verificar las fechas del cupon
+      const currentDate = new Date();
+      const startDate = new Date(`${filteredCoupon.start_date}T00:00:00`);
+      const endDate = new Date(`${filteredCoupon.end_date}T23:59:59`);
+
+      if (currentDate <= startDate || currentDate >= endDate) {
+        setErrorMessage("El cupón ya no es válido.");
+        return;
+      }
+
+      applyCoupon(filteredCoupon);
     }
   };
   return (
@@ -98,7 +113,11 @@ const CouponForm = ({ setDiscauntPeeercent, subTotal, addNewProduct }) => {
         />
         <button
           type="button"
-          className={`p-2 rounded-full w-32 bg-[--button-bg-secondary] text-[--bg-100] ${!!localStorage.getItem("coupon") ? "cursor-not-allowed" : "cursor-pointer"}`}
+          className={`p-2 rounded-full w-32 bg-[--button-bg-secondary] text-[--bg-100] ${
+            !!localStorage.getItem("coupon")
+              ? "cursor-not-allowed"
+              : "cursor-pointer"
+          }`}
           onClick={validateCoupon}
           disabled={!!localStorage.getItem("coupon")}
         >

@@ -67,6 +67,7 @@ const Formularios = () => {
           setDiscauntPeeercent={setDiscauntPeeercent}
           subTotal={subTotal}
           addNewProduct={addNewProduct}
+          cartList = {cartList}
         />
         <h2 className="text-lg font-semibold text-gray-800 mb-4 w-full text-center lg:text-2xl">
           Lista de productos:
