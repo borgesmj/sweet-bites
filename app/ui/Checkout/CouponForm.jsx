@@ -16,15 +16,18 @@ const CouponForm = ({
       return;
     }
     const product = await DataService.fetchProductById(coupon.product_id);
-    const newProduct = {
-      quantity: 1,
-      name: product?.title,
-      size: product?.productPrices[0].size,
-      detailPrice: product?.productPrices[0].price,
-      id: product?.id,
-      image: product?.images.png,
-      special_product: product.special_product,
-    };
+    let newProduct = {};
+    if (product) {
+      newProduct = {
+        quantity: 1,
+        name: product?.title,
+        size: product?.productPrices[0].size,
+        detailPrice: product?.productPrices[0].price,
+        id: product?.id,
+        image: product?.images.png,
+        special_product: product.special_product,
+      };
+    }
     switch (coupon.type) {
       case "discount":
         setDiscauntPeeercent(coupon.discount_value / 100);
