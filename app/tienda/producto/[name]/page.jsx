@@ -5,7 +5,7 @@ import ShoppingCartList from "@/ui/Cart/ShoppingCartList";
 import ProductPageContent from "@/ui/ProductPage/ProductPageContent";
 import { CartProvider } from "@/lib/AddToCartContext";
 import { useParams } from "next/navigation";
-export default function page() {
+export default function Page() {
   const params = useParams();
   const productName = params.name;
   return (

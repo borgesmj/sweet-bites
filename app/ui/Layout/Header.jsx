@@ -6,6 +6,7 @@ import ShoppingBagBtn from "@/ui/Buttons/ShoppingBagBtn";
 import { useState } from "react";
 import { CartProvider } from "@/lib/AddToCartContext";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 export default function Header() {
   const [animatedLink, setAnimatedLink] = useState(false);
   const pathName = usePathname();
@@ -19,7 +20,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 border-solid border-2 border-b-[--button-bg-sumary] w-dvw p-2 flex flex-row justify-around items-center h-[--header-height]  md:px-8 lg:px-16 bg-[var(--bg-100)] z-10">
       <input type="checkbox" name="" id="burger-chbx" className="hidden" />
       <BurgerMenu animateLink={animateLink} />
-      <a href="/">
+      <Link href="/">
         <Image
           src="/logo-header-mobile.png"
           width={100}
@@ -34,7 +35,7 @@ export default function Header() {
           alt="Logo"
           className="hidden lg:block lg:w-auto"
         />
-      </a>
+      </Link>
       <Navlinks animatedLink={animatedLink} pathName={pathName} />
       <CartProvider>
         <ShoppingBagBtn pathName={pathName}/>
