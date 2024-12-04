@@ -85,6 +85,7 @@ class DataService {
     try {
       const allProducts = await this.fetchData();
       topFiveProducts = allProducts
+        .filter((product) => product.special_product === false)
         .sort((a, b) => b.rating.rate - a.rating.rate)
         .slice(0, 5);
     } catch (error) {
