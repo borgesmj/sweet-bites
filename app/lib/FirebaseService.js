@@ -58,7 +58,7 @@ class DataService {
     try {
       const allProducts = await this.fetchData();
       allProducts.forEach((product) => {
-        if (!categories?.includes(product.category)) {
+        if (!categories?.includes(product.category) && product.special_product === false) {
           categories.push(product.category);
         }
       });
