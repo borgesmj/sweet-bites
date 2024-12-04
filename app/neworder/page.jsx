@@ -29,7 +29,11 @@ const getTimestamp = () => {
     let messageText = ""
     messageText += `Hola, he realizado un nuevo pedido. Con el ID: ${orderID}`
     const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${messageText}`
+    window.open(
+      `whatsapp://send?phone=${phoneNumber}&text=${messageText}`,
+      '_blank' // <- This is what makes it open in a new window.
+    );
+    window.location.href = "/"
   };
   useEffect(() => {
     sendOrder();

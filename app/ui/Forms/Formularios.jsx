@@ -50,7 +50,7 @@ const Formularios = () => {
       paymentMethod: paymentMethod,
       subtotal: subTotal,
       discountPercent: discountPercent,
-      total: subTotal - subTotal * (discountPercent / 100),
+      total: subTotal - (subTotal * (discountPercent)),
       homeDelivery: homeDelivery,
       address: address,
       deliveryDate: formatDate(deliveryDate),
