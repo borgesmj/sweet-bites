@@ -5,7 +5,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 const FormCalendar = ({setDeliveryDate}) => {
     const startDate = () => {
         const today = new Date();
-        const twoDaysAfter= today.setDate(today.getDate() + 2);
+        const twoDaysAfter= today.setDate(today.getDate() + 0);
         return twoDaysAfter;
     };
     const [selectedDate, setSelectedDate] = useState(null)
