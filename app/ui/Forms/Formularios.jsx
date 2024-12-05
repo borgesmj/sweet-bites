@@ -37,7 +37,7 @@ const Formularios = () => {
   const formatDate = (deliveryDate) => {
     const pickedDate = new Date(deliveryDate);
     const day = pickedDate.getDate();
-    const month = pickedDate.getMonth();
+    const month = pickedDate.getMonth() + 1;
     const year = pickedDate.getFullYear();
     return `${day}/${month}/${year}`;
   };
