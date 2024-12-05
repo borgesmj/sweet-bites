@@ -29,11 +29,11 @@ export default function Header() {
           className="block lg:hidden w-auto"
         />
         <Image
-          src="/logo-herder-desktop.png"
+          src="/logo-hero-desktop.png"
           width={200}
-          height={70}
+          height={50}
           alt="Logo"
-          className="hidden lg:block lg:w-auto"
+          className="hidden lg:h-[70px] lg:block lg:w-auto"
         />
       </Link>
       <Navlinks animatedLink={animatedLink} pathName={pathName} />
