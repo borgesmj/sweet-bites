@@ -106,7 +106,7 @@ const CouponForm = ({
           type="text"
           id="cuponInput"
           placeholder="¿Tienes un cupon?"
-          className="bg-transparent outline-none focus:border-b border-gray-600 p-2 w-full md:w-1/2 placeholder:text-[--text-100] "
+          className="bg-transparent outline-none focus:border-b border-gray-600 p-2 w-full md:w-1/2 placeholder:text-red-500 placeholder:font-semibold"
           tabIndex="1"
           onChange={(e) => {
             setUserCoupon(e.target.value.toUpperCase());
