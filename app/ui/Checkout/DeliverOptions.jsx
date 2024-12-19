@@ -14,7 +14,7 @@ const DeliverOptions = ({
   setAddress,
   address,
   setDeliveryFee,
-  setDeliveryDate
+  setDeliveryDate,
 }) => {
   return (
     <div id="user-data" className="flex flex-col w-full gap-4">
@@ -43,7 +43,7 @@ const DeliverOptions = ({
           value={phonenumber}
         />
         {/* * * Aqui va el calendario * * */}
-        <FormCalendar setDeliveryDate={setDeliveryDate}/>
+        <FormCalendar setDeliveryDate={setDeliveryDate} />
       </div>
       <div id="options" className="w-full flex flex-row justify-around">
         <div className="w-1/2 flex flex-col items-center gap-3">
@@ -96,10 +96,21 @@ const DeliverOptions = ({
             value={address}
             tabIndex="5"
           />
-          <span className="text-xs text-[red] w-full text-center">
-            El servicio a domicilio podria tener un costo adicional.
-          </span>
-          
+          <p className="w-full flex flex-row gap-2">
+            <input
+              type="checkbox"
+              name=""
+              id="confirmDelivery"
+              required={homeDelivery}
+            />
+            <label
+              htmlFor="confirmDelivery"
+              className="text-sm font-semibold text-[red]"
+            >
+              Estoy de acuerdo con el posible costo adicional por entrega a
+              domicilio.
+            </label>
+          </p>
         </>
       ) : null}
       <div className="campo w-full flex flex-col md:flex-row md:justify-start">
