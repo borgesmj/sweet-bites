@@ -41,7 +41,7 @@ export default function Template({ productInfo }) {
     await showProductInfo(id);
     await openModal();
   };
-  
+  console.log(productInfo);
 
   return (
     <div
@@ -77,14 +77,14 @@ export default function Template({ productInfo }) {
         onClick={() => {
           handleOpenModal(productInfo.id);
         }}
-        disabled={isModalOpen}
+        disabled={isModalOpen || !productInfo.isAvailable}
         id={`addCartBtn-id-${productInfo.id}`}
-        className={`h-14 relative w-full py-4 px-6 text-center rounded-md  font-bold transition-all ${
+        className={`h-14 relative w-full py-4 px-6 text-center rounded-md  font-bold transition-all disabled:bg-gray-400 disabled:text-gray-800 disabled:opacity-70 disabled:cursor-not-allowed ${
           isModalOpen && thisCardAddinToCart
             ? "bg-[--button-bg-primary]  cursor-not-allowed"
             : isModalOpen
             ? "bg-gray-400 text-gray-500 opacity-70 cursor-not-allowed"
-            : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
+            : "bg-[--button-bg-primary] text-white opacity-100 group cursor-pointer   group enabled:lg:before:content-['+'] before:absolute before:-bottom-1/2 before:left-0 before:w-full lg:before:opacity-0  lg:hover:before:-translate-y-11 lg:hover:before:opacity-100  before:transition-all"
         }`}
       >
         {isModalOpen && !thisCardAddinToCart ? (
@@ -93,6 +93,8 @@ export default function Template({ productInfo }) {
           <span className="font-bold text-white opacity-100">
             Elige el tamaño
           </span>
+        ) : !productInfo.isAvailable ? (
+          <span className="block max-w-3/4">No disponible</span>
         ) : (
           <span className="w-full relative block transition-all lg:opacity-100 lg:group-hover:-translate-y-6 lg:group-hover:opacity-0">
             Ver Precios
